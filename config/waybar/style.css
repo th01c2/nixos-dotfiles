@@ -174,10 +174,11 @@
 
 /* Configuration for the whole workspaces module */
 #workspaces {
-  background-color: #2e3440; /* Dark background for the outer rounded square */
+  background-color: rgba(46, 52, 64, 0.5); /* RGBA for #2e3440 with 50% opacity */
   border-radius: 8px; /* Slightly less rounded corners for the outer container */
   padding: 4px; /* Adjusted padding inside the outer rounded square */
   margin: 1px 4px; /* Slightly smaller margin around the whole module */
+  margin-left: 15px; /* Add some left margin */
 }
 
 /* Styling for each individual workspace button */
@@ -196,12 +197,6 @@
 #workspaces button.active {
   background-color: #a3be8c; /* A soft green for the active background */
   color: #2e3440; /* Dark text color for the active workspace number */
-}
-
-/* Styling for occupied workspaces */
-#workspaces button.occupied {
-  background-color: #5e81ac; /* A cool blue for occupied workspaces */
-  color: #d8dee9;
 }
 
 /* Styling for urgent workspaces */
