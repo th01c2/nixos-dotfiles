@@ -16,7 +16,7 @@
     "position": "top",
 
     // If height property would be not present, it'd be calculated dynamically
-    "height": 34,
+    "height": 39,
 
     "modules-left": [
         "hyprland/workspaces",
@@ -84,7 +84,7 @@
 
     "memory": {
         "interval": 3,
-        "format": "  {}%", // Icon: memory
+        "format": " {}%", // Icon: memory
         "states": {
             "warning": 70,
             "critical": 90
@@ -104,7 +104,7 @@
 
     "pulseaudio": {
         //"scroll-step": 1,
-        "format": "{icon}  {volume}%",
+        "format": "{icon}   {volume}%",
         "format-bluetooth": "{icon}  {volume}%",
         "format-muted": "",
         "format-icons": {
