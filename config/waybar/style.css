@@ -1,0 +1,211 @@
+/* =============================================================================
+ *
+ * Waybar configuration
+ *
+ * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
+ *
+ * =========================================================================== */
+
+/* -----------------------------------------------------------------------------
+ * Keyframes
+ * -------------------------------------------------------------------------- */
+
+@keyframes blink-warning {
+    70% {
+        color: white;
+    }
+
+    to {
+        color: white;
+        background-color: orange;
+    }
+}
+
+@keyframes blink-critical {
+    70% {
+      color: white;
+    }
+
+    to {
+        color: white;
+        background-color: red;
+    }
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Base styles
+ * -------------------------------------------------------------------------- */
+
+/* Reset all styles */
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+/* The whole bar */
+#waybar {
+  background: rgba(50, 50, 50, 0.7); /* RGBA for #323232 with 70% opacity */
+  color: white;
+  font-family: Cantarell, Noto Sans, sans-serif;
+  font-size: 13px;
+}
+/* Each module */
+#battery,
+#clock,
+#cpu,
+#custom-keyboard-layout,
+#memory,
+#mode,
+#network,
+#pulseaudio,
+#temperature,
+#tray {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+
+/* -----------------------------------------------------------------------------
+ * Module styles
+ * -------------------------------------------------------------------------- */
+
+#battery {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#battery.warning {
+    color: orange;
+}
+
+#battery.critical {
+    color: red;
+}
+
+#battery.warning.discharging {
+    animation-name: blink-warning;
+    animation-duration: 3s;
+}
+
+#battery.critical.discharging {
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#clock {
+    font-weight: bold;
+}
+
+#cpu {
+  /* No styles */
+}
+
+#cpu.warning {
+    color: orange;
+}
+
+#cpu.critical {
+    color: red;
+}
+
+#memory {
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#memory.warning {
+    color: orange;
+}
+
+#memory.critical {
+    color: red;
+    animation-name: blink-critical;
+    animation-duration: 2s;
+}
+
+#mode {
+    background: #64727D;
+    border-top: 2px solid white;
+    /* To compensate for the top border and still have vertical centering */
+    padding-bottom: 2px;
+}
+
+#network {
+    /* No styles */
+}
+
+#network.disconnected {
+    color: orange;
+}
+
+#pulseaudio {
+    /* No styles */
+}
+
+#pulseaudio.muted {
+    /* No styles */
+}
+
+#custom-spotify {
+    color: rgb(102, 220, 105);
+}
+
+#temperature {
+    /* No styles */
+}
+
+#temperature.critical {
+    color: red;
+}
+
+#tray {
+    /* No styles */
+}
+
+#window {
+    font-weight: bold;
+}
+
+/* Configuration for the whole workspaces module */
+#workspaces {
+  background-color: #2e3440; /* Dark background for the outer rounded square */
+  border-radius: 8px; /* Slightly less rounded corners for the outer container */
+  padding: 4px; /* Adjusted padding inside the outer rounded square */
+  margin: 1px 4px; /* Slightly smaller margin around the whole module */
+}
+
+/* Styling for each individual workspace button */
+#workspaces button {
+  background-color: transparent; /* Inner buttons remain transparent */
+  color: #d8dee9; /* Light gray text color for inactive workspaces */
+  border: none;
+  border-radius: 4px; /* Rounded corners for the inner "circles" */
+  padding: 2px 6px;
+  margin: 1px;
+  min-width: 0px;
+  min-height: 0px;
+}
+
+/* Styling for the active workspace */
+#workspaces button.active {
+  background-color: #a3be8c; /* A soft green for the active background */
+  color: #2e3440; /* Dark text color for the active workspace number */
+}
+
+/* Styling for occupied workspaces */
+#workspaces button.occupied {
+  background-color: #5e81ac; /* A cool blue for occupied workspaces */
+  color: #d8dee9;
+}
+
+/* Styling for urgent workspaces */
+#workspaces button.urgent {
+  background-color: #bf616a; /* A vibrant red for urgent workspaces */
+  color: #f8f8f2; /* Light text for urgent workspaces */
+}
