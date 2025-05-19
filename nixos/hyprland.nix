@@ -19,8 +19,7 @@
     brightnessctl
     blueman
     networkmanagerapplet
-    gruvbox-gtk-theme
-    gruvbox-dark-icons-gtk
+    nwg-look
   ];
 
   # If using a display manager like greetd or SDDM, configure it here

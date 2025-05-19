@@ -48,7 +48,7 @@
 
 /* The whole bar */
 #waybar {
-  background-color: rgba(106, 106, 106, 0.65); /* RGBA for #323232 with 70% opacity */
+  background-color: transparent; /* RGBA for #323232 with 70% opacity */
   color: white;
   font-family: Cantarell, Noto Sans, sans-serif;
   font-size: 13px;
@@ -74,9 +74,14 @@
  * -------------------------------------------------------------------------- */
 
 #battery {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 4px; /* Add some padding around the tray icons */
+  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+  margin-right: 10px; /* Add some right margin to separate from other right-side modules */
 }
 
 #battery.warning {
@@ -99,10 +104,19 @@
 
 #clock {
     font-weight: bold;
+    background-color: rgba(46, 52, 64, 0.5);
+    border-radius: 8px;
+    padding: 4px; /* Add some padding around the tray icons */
+    margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+    margin-right: 10px; /* Add some right margin to separate from other right-side modules */
 }
 
 #cpu {
-  /* No styles */
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 4px; /* Add some padding around the tray icons */
+  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
 }
 
 #cpu.warning {
@@ -114,9 +128,14 @@
 }
 
 #memory {
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 4px; /* Add some padding around the tray icons */
+  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
 }
 
 #memory.warning {
@@ -137,19 +156,36 @@
 }
 
 #network {
-    /* No styles */
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 4px; /* Add some padding around the tray icons */
+  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
 }
 
 #network.disconnected {
-    color: orange;
+  color: orange;
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 4px; /* Add some padding around the tray icons */
+  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
 }
 
 #pulseaudio {
-    /* No styles */
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 4px; /* Add some padding around the tray icons */
+  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
 }
 
 #pulseaudio.muted {
-    /* No styles */
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 4px; /* Add some padding around the tray icons */
+  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
 }
 
 #custom-spotify {
@@ -157,7 +193,11 @@
 }
 
 #temperature {
-    /* No styles */
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 4px; /* Add some padding around the tray icons */
+  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
 }
 
 #temperature.critical {
@@ -204,8 +244,8 @@
 
 /* Styling for the active workspace */
 #workspaces button.active {
-  background-color: #a3be8c; /* A soft green for the active background */
-  color: #2e3440; /* Dark text color for the active workspace number */
+  background-color: #6a6a6a; /* A soft green for the active background */
+  color: #ffffff; /* Dark text color for the active workspace number */
 }
 
 /* Styling for urgent workspaces */
