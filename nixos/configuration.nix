@@ -1,7 +1,3 @@
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running ‘nixos-help’).
-
 { config, pkgs, ... }:
 
 {
@@ -17,7 +13,6 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
@@ -40,7 +35,7 @@
     LC_TIME = "ro_RO.UTF-8";
   };
 
-  # Enable the Budgie Desktop environment.
+  # Enable Hyprland environment.
   services.xserver.enable = false;
   services.xserver.displayManager.gdm.enable = true;  
 
@@ -61,13 +56,8 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    # If you want to use JACK applications, uncomment this
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
-  # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sebastian = {
     isNormalUser = true;
     description = "Sebastian";
@@ -80,6 +70,8 @@
   # Install firefox.
   programs.firefox.enable = true;
   programs.hyprland.enable = true;
+  programs.thunar.enable = true;
+
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -96,6 +88,14 @@
         mpv
         ffmpeg
   ];
+
+  programs.thunar.plugins = with pkgs.xfce; [
+	thunar-archive-plugin
+	thunar-volman
+   ];
+
+  services.gvfs.enable = true; # Mount, trash, and other functionalities
+  services.tumbler.enable = true; # Thumbnail support for images
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
