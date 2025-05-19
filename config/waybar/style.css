@@ -262,7 +262,7 @@
 
 /* Blinking red when recording */
 #custom-recorder_status.recording {
-  animation: blink 1s infinite;
+  animation: blink 2s infinite;
   color: red;
 }
 
