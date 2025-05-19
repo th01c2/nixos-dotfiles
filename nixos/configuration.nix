@@ -6,6 +6,7 @@
       ./hardware-configuration.nix
       ./bash_configuration.nix
       ./hyprland.nix
+      ./modules/theme.nix
     ];
 
   # Bootloader.
