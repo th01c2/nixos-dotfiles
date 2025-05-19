@@ -69,6 +69,8 @@
     extraGroups = [ "networkmanager" "wheel" "git" ];
     packages = with pkgs; [
 	telegram-desktop
+	stremio
+	vscodium
     ];
   };
 
@@ -76,7 +78,7 @@
   programs.firefox.enable = true;
   programs.hyprland.enable = true;
   programs.thunar.enable = true;
-
+  programs.file-roller.enable = true;
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -84,14 +86,17 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-	pavucontrol
-	hyprland
-	foot
-	git
-        mpv
-        ffmpeg
-	zip
-	unzip
+	pavucontrol # Audio Manager
+	lxqt.lxqt-policykit
+	hyprland # Hyprland
+	foot # Terminal
+	git # Git...
+        mpv # Video Streamer
+	imv  # Image Viewer
+        ffmpeg # Codec
+	zip # Archive files
+	unzip # Archive Extractor
+	loupe # Image viewer
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
@@ -106,5 +111,4 @@
 
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }
