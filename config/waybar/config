@@ -32,7 +32,8 @@
         "temperature",
         "battery",
         "clock#date",
-	"tray"
+	"tray",
+	"custom/recorder_status"
     ],
 
 
@@ -135,6 +136,16 @@
     "tray": {
         "icon-size": 21,
         "spacing": 10
-    }
+    },
+
+    "custom/recorder_status": {
+  "format": "{}",
+  "tooltip": false,
+  "interval": 2,
+  "exec": "if pgrep -x wl-screenrec > /dev/null; then echo '{\"text\": \"🔴\", \"class\": \"recording\"}'; else echo '{\"text\": \"\", \"class\": \"not-recording\"}'; fi",
+  "on-click": "pkill wl-screenrec",
+  "return-type": "json"
+}
+
 
 }

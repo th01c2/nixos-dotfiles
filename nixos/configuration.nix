@@ -93,6 +93,8 @@
 	bluez-tools
 	git
 	pavucontrol
+        mpv
+        ffmpeg
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];

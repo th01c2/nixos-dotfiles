@@ -10,6 +10,7 @@
     wofi             # Launcher (like rofi)
     grim             # Screenshot tool
     slurp            # Select region for screenshots
+    wl-screenrec
     wl-clipboard     # Clipboard utilities for Wayland
     qt5.qtwayland    # Qt Wayland support
     qt6.qtwayland
@@ -20,6 +21,7 @@
     blueman
     networkmanagerapplet
     nwg-look
+    
   ];
 
   # If using a display manager like greetd or SDDM, configure it here

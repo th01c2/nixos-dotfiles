@@ -253,3 +253,27 @@
   background-color: #bf616a; /* A vibrant red for urgent workspaces */
   color: #f8f8f2; /* Light text for urgent workspaces */
 }
+
+/* Recorder module base style */
+#custom-recorder_status {
+  font-size: 16px;
+  padding: 0 8px;
+}
+
+/* Blinking red when recording */
+#custom-recorder_status.recording {
+  animation: blink 1s infinite;
+  color: red;
+}
+
+/* White when not recording */
+#custom-recorder_status.not-recording {
+  color: white;
+}
+
+/* Blinking animation */
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0.2; }
+  100% { opacity: 1; }
+}
