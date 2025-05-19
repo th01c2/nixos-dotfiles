@@ -48,7 +48,7 @@
             "critical": 15
         },
         // Connected to AC
-        "format": "   {icon}  {capacity}%", // Icon: bolt
+        "format": "<span color='#fffb00'> </span>  {icon}  {capacity}%", // Icon: bolt
         // Not connected to AC
         "format-discharging": "{icon}  {capacity}%",
         "format-icons": [
