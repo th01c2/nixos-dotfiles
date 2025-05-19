@@ -74,7 +74,7 @@
 
     "cpu": {
         "interval": 3,
-        "format": "  {usage}% ({load})", // Icon: microchip
+        "format": "  {usage}% ", // Icon: microchip
         "states": {
           "warning": 70,
           "critical": 90

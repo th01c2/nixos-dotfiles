@@ -48,7 +48,7 @@
 
 /* The whole bar */
 #waybar {
-  background: rgba(50, 50, 50, 0.7); /* RGBA for #323232 with 70% opacity */
+  background-color: rgba(106, 106, 106, 0.65); /* RGBA for #323232 with 70% opacity */
   color: white;
   font-family: Cantarell, Noto Sans, sans-serif;
   font-size: 13px;
@@ -165,9 +165,18 @@
 }
 
 #tray {
-    /* No styles */
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 4px; /* Add some padding around the tray icons */
+  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+  margin-right: 10px; /* Add some right margin to separate from other right-side modules */
 }
 
+#tray > .needs-attention {
+  -gtk-icon-shadow: none;
+  color: #ebcb8b; /* Example color for attention icons */
+  padding: 0px;
+}
 #window {
     font-weight: bold;
 }
@@ -177,7 +186,7 @@
   background-color: rgba(46, 52, 64, 0.5); /* RGBA for #2e3440 with 50% opacity */
   border-radius: 8px; /* Slightly less rounded corners for the outer container */
   padding: 4px; /* Adjusted padding inside the outer rounded square */
-  margin: 1px 4px; /* Slightly smaller margin around the whole module */
+  margin: 4px 5px; /* Slightly smaller margin around the whole module */
   margin-left: 15px; /* Add some left margin */
 }
 
