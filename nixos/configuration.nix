@@ -96,7 +96,7 @@
         ffmpeg # Codec
 	zip # Archive files
 	unzip # Archive Extractor
-	loupe # Image viewer
+	libnotify
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
