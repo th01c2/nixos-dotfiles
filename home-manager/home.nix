@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../nixos/modules/theme.nix
+  ];
+
   home.username = "sebastian";
   home.homeDirectory = "/home/sebastian";
   home.stateVersion = "24.11";

@@ -1,12 +1,11 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
+  imports = [
+       # Nix Modules
       ./hardware-configuration.nix
       ./bash_configuration.nix
       ./hyprland.nix
-      ./modules/theme.nix
     ];
 
   # Bootloader.
@@ -17,6 +16,11 @@
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  hardware.bluetooth.enable = true;
+
+  # Bluetooth
+  services.blueman.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
@@ -80,14 +84,14 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+	pavucontrol
 	hyprland
 	foot
-	bluez
-	bluez-tools
 	git
-	pavucontrol
         mpv
         ffmpeg
+	zip
+	unzip
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
