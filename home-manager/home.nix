@@ -18,6 +18,7 @@
   home.file = {
     ".config/hypr/hyprland.conf".source = ../config/hypr/hyprland.conf;
     ".config/hypr/hyprlock.conf".source = ../config/hypr/hyprlock.conf;
+    ".config/hypr/hypr.png".source = ../config/hypr/hypr.png;
     ".config/hypr/hyprpaper.conf".source = ../config/hypr/hyprpaper.conf;
     ".config/waybar/config".source = ../config/waybar/config;
     ".config/waybar/style.css".source = ../config/waybar/style.css;
