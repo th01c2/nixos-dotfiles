@@ -17,6 +17,7 @@
     foot	     # Foot terminal
     hyprsunset	     # Night Light Mode
     hyprpaper	     # Wallpaper Utility
+    hypridle	     # Add Inactivity Timer for Hyprlock
     brightnessctl    # Change Brightness
     blueman	     # Bluetooth Daemon
     networkmanagerapplet #Network Button (Neede for Waybar)
