@@ -1,21 +1,6 @@
-// =============================================================================
-//
-// Waybar configuration
-//
-// Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
-//
-// =============================================================================
-
 {
-    // -------------------------------------------------------------------------
-    // Global configuration
-    // -------------------------------------------------------------------------
-
     "layer": "top",
-
     "position": "top",
-
-    // If height property would be not present, it'd be calculated dynamically
     "height": 39,
 
     "modules-left": [
@@ -26,6 +11,7 @@
         "clock#time"
     ],
     "modules-right": [
+	"power-profiles-daemon",
 	"pulseaudio",
         "memory",
         "cpu",
@@ -139,12 +125,23 @@
     },
 
     "custom/recorder_status": {
-  "format": "{}",
-  "tooltip": false,
-  "interval": 2,
-  "exec": "if pgrep -x wl-screenrec > /dev/null; then echo '{\"text\": \"🔴\", \"class\": \"recording\"}'; else echo '{\"text\": \"\", \"class\": \"not-recording\"}'; fi",
-  "on-click": "pkill wl-screenrec",
-  "return-type": "json"
-}
+      "format": "{}",
+      "tooltip": false,
+      "interval": 2,
+      "exec": "if pgrep -x wl-screenrec > /dev/null; then echo '{\"text\": \"🔴\", \"class\": \"recording\"}'; else echo '{\"text\": \"\", \"class\": \"not-recording\"}'; fi",
+      "on-click": "pkill wl-screenrec",
+      "return-type": "json"
+    },
 
+     "power-profiles-daemon": {
+	"format": "{icon}",
+	"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+	"tooltip": true,
+	"format-icons": {
+	"default": "  ",
+	"performance": "  ",
+	"balanced": "   ",
+	"power-saver": "   "
+      }
+    }
 }

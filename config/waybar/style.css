@@ -54,6 +54,7 @@
   font-size: 13px;
 }
 /* Each module */
+#power-profiles-daemon
 #battery,
 #clock,
 #cpu,
@@ -276,4 +277,11 @@
   0% { opacity: 1; }
   50% { opacity: 0.2; }
   100% { opacity: 1; }
+}
+ #power-profiles-daemon {
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 4px; /* Add some padding around the tray icons */
+  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
 }

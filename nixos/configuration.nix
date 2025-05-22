@@ -11,6 +11,14 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # ====================================
+  # ZRAM Setup
+  # ====================================
+  zramSwap.enable = true;          # Turn ZRAM on
+  zramSwap.algorithm = "zstd";     # Use zstd for good balance
+  boot.initrd.kernelModules = [ "zram" ]; # Ensure zram module is loaded early
 
   networking.hostName = "nixos"; # Define your hostname.
 
@@ -112,6 +120,7 @@
 
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
+  services.power-profiles-daemon.enable = true;
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
