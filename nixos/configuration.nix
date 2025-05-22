@@ -42,7 +42,13 @@
 
   # Enable Hyprland environment.
   services.xserver.enable = false;
-  services.xserver.displayManager.gdm.enable = true;  
+  services.xserver.displayManager.gdm.enable = true;
+
+  # Enable Hyprlock
+  programs.hyprlock.enable = true;
+
+  # Configure PAM for Hyprlock to allow authentication
+  security.pam.services.hyprlock = {};
 
   # Configure keymap in X11
   services.xserver.xkb = {
