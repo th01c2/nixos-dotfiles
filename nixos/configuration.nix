@@ -110,7 +110,7 @@
         ffmpeg # Codec
 	zip # Archive files
 	unzip # Archive Extractor
-	libnotify
+	libnotify # Notification daemon also needed for pmc
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [

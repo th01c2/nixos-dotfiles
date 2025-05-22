@@ -10,17 +10,17 @@
     wofi             # Launcher (like rofi)
     grim             # Screenshot tool
     slurp            # Select region for screenshots
-    wl-screenrec
+    wl-screenrec     # Screen Recorder Utility
     wl-clipboard     # Clipboard utilities for Wayland
     qt5.qtwayland    # Qt Wayland support
-    qt6.qtwayland
-    foot
-    hyprsunset
-    hyprpaper
-    brightnessctl
-    blueman
-    networkmanagerapplet
-    nwg-look
+    qt6.qtwayland    # Qr Wayland 6 support
+    foot	     # Foot terminal
+    hyprsunset	     # Night Light Mode
+    hyprpaper	     # Wallpaper Utility
+    brightnessctl    # Change Brightness
+    blueman	     # Bluetooth Daemon
+    networkmanagerapplet #Network Button (Neede for Waybar)
+    nwg-look	     # Change theme
     
   ];
 
