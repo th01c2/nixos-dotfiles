@@ -10,9 +10,12 @@
   home.stateVersion = "24.11";
 
   home.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "FiraCode" "JetBrainsMono" "Hack" ]; })
-    font-awesome
-  ];
+  nerd-fonts.fira-code
+  nerd-fonts.jetbrains-mono
+  nerd-fonts.hack
+  font-awesome
+];
+
 
   # Hyprland configuration symlink
   home.file = {
