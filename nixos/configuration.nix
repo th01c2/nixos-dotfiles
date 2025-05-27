@@ -80,7 +80,7 @@
   users.users.sebastian = {
     isNormalUser = true;
     description = "Sebastian";
-    extraGroups = [ "networkmanager" "wheel" "git" ];
+    extraGroups = [ "networkmanager" "wheel" "git" "adbusers" ];
     packages = with pkgs; [
 	telegram-desktop
 	stremio
@@ -111,6 +111,8 @@
 	zip # Archive files
 	unzip # Archive Extractor
 	libnotify # Notification daemon also needed for pmc
+	android-tools
+	payload-dumper-go
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
