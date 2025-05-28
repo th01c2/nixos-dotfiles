@@ -22,7 +22,7 @@
     blueman	     # Bluetooth Daemon
     networkmanagerapplet #Network Button (Neede for Waybar)
     nwg-look	     # Change theme
-    
+    hyprcursor    
   ];
 
   # If using a display manager like greetd or SDDM, configure it here
