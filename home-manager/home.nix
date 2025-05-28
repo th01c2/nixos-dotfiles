@@ -22,8 +22,6 @@
     ".config/hypr/hyprland.conf".source = ../config/hypr/hyprland.conf;
     ".config/hypr/hyprlock.conf".source = ../config/hypr/hyprlock.conf;
     ".config/hypr/hypridle.conf".source = ../config/hypr/hypridle.conf;
-    ".config/hypr/hypr.png".source = ../wallpapers/hypr.png;
-    ".config/hypr/foreground.png".source = ../wallpapers/foreground.png;
     ".config/hypr/hyprpaper.conf".source = ../config/hypr/hyprpaper.conf;
     ".config/waybar/config".source = ../config/waybar/config;
     ".config/waybar/style.css".source = ../config/waybar/style.css;
