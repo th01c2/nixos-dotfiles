@@ -25,10 +25,9 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  hardware.bluetooth.enable = true;
-
   # Bluetooth
   services.blueman.enable = true;
+  hardware.bluetooth.enable = true;
 
   # Set your time zone.
   time.timeZone = "Europe/Bucharest";
@@ -50,10 +49,18 @@
 
   # Enable Hyprland environment.
   services.xserver.enable = false;
-  services.xserver.displayManager.gdm.enable = true;
 
   # Enable Hyprlock
   programs.hyprlock.enable = true;
+
+  # Enable Login-Manager
+  services.greetd.enable = true;
+  services.greetd.settings = {
+    default_session = {
+      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
+      user = "sebastian";
+    };
+  };
 
   # Configure PAM for Hyprlock to allow authentication
   security.pam.services.hyprlock = {};
@@ -80,7 +87,7 @@
   users.users.sebastian = {
     isNormalUser = true;
     description = "Sebastian";
-    extraGroups = [ "networkmanager" "wheel" "git" "adbusers" ];
+    extraGroups = [ "networkmanager" "wheel" "git" ];
     packages = with pkgs; [
 	telegram-desktop
 	stremio
@@ -88,7 +95,7 @@
     ];
   };
 
-  # Install firefox.
+  # Install Programs
   programs.firefox.enable = true;
   programs.hyprland.enable = true;
   programs.thunar.enable = true;
@@ -100,6 +107,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+	greetd.tuigreet
 	pavucontrol # Audio Manager
 	lxqt.lxqt-policykit
 	hyprland # Hyprland
@@ -119,7 +127,8 @@
 	thunar-archive-plugin
 	thunar-volman
    ];
-
+  
+  # Enable System Features
   services.gvfs.enable = true; # Mount, trash, and other functionalities
   services.tumbler.enable = true; # Thumbnail support for images
   services.power-profiles-daemon.enable = true;
