@@ -103,7 +103,7 @@
   services.greetd.enable = true;
   services.greetd.settings = {
     default_session = {
-      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --user sebastian --cmd hyprland";
+      command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --cmd hyprland";
       user = "sebastian";
     };
   };
