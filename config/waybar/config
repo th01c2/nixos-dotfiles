@@ -79,7 +79,7 @@
 
     "hyprland/window": {
         "format": " {}",
-        "max-length": 120
+        "max-length": 40
     },
 
     "hyprland/workspaces": {
