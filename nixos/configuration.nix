@@ -8,6 +8,7 @@
     ./hardware-configuration.nix      # Hardware config
     ./bash_configuration.nix          # Custom bash settings
     ./hyprland.nix                    # Hyprland-specific config
+    ./yazi.nix			      # Yazi file manager
   ];
 
   # ================================
@@ -18,13 +19,13 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
   # Ensure zram module is loaded in early init
-  boot.initrd.kernelModules = [ "zram" ];
+  boot.initrd.kernelModules = [ "lz4" ];
 
   # ================================
   # ZRAM Setup
   # ================================
   zramSwap.enable = true;
-  zramSwap.algorithm = "zstd";
+  zramSwap.algorithm = "lz4";
 
   # ================================
   # System Identity & Locale
@@ -123,22 +124,17 @@
   programs.file-roller.enable = true;
   programs.thunar.enable = true;
 
-  programs.thunar.plugins = with pkgs.xfce; [
-    thunar-archive-plugin
-    thunar-volman
-  ];
-
   # ================================
   # System Services
   # ================================
   services.gvfs.enable = true;                      # Filesystem support
-  services.tumbler.enable = true;                   # Thumbnails in Thunar
   services.power-profiles-daemon.enable = true;     # Power profiles
 
   # ================================
   # System Packages
   # ================================
   environment.systemPackages = with pkgs; [
+    yazi
     android-tools           # ADB & Fastboot
     foot                    # Terminal
     ffmpeg                  # Media encoder/decoder
