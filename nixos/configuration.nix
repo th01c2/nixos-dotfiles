@@ -8,7 +8,6 @@
     ./hardware-configuration.nix      # Hardware config
     ./bash_configuration.nix          # Custom bash settings
     ./hyprland.nix                    # Hyprland-specific config
-    ./yazi.nix			      # Yazi file manager
   ];
 
   # ================================
@@ -17,6 +16,11 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+
+  # ================================
+  # Graphics Settings (AMD)
+  # ================================
+  hardware.graphics.enable = true;
 
   # Ensure zram module is loaded in early init
   boot.initrd.kernelModules = [ "lz4" ];
@@ -121,8 +125,6 @@
   # Programs
   # ================================
   programs.firefox.enable = true;
-  programs.file-roller.enable = true;
-  programs.thunar.enable = true;
 
   # ================================
   # System Services
@@ -134,7 +136,6 @@
   # System Packages
   # ================================
   environment.systemPackages = with pkgs; [
-    yazi
     android-tools           # ADB & Fastboot
     foot                    # Terminal
     ffmpeg                  # Media encoder/decoder
@@ -149,6 +150,10 @@
     payload-dumper-go       # For Android firmware extraction
     unzip                   # Unarchiver
     zip                     # Archiver
+    jq			    # Json Preview for Yazi
+    poppler		    # PDF Renderer for Yazi
+    fd 			    # File Searcher for Yazi
+    nemo    
   ];
 
   # ================================
