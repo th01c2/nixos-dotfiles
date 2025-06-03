@@ -1,19 +1,63 @@
 window {
-    background-color: rgba(0, 0, 0, 0.3); /* transparent background */
+    font-family: CaskaydiaCove Nerd Font, monospace;
+    font-size: 12pt;
+    color: #cdd6f4;
+    background-color: rgba(17, 17, 27, .88);
 }
 
 button {
-    min-width: 100px;
-    min-height: 100px;
-    margin: 10px;
-    border-radius: 12px;
-    background-color: rgba(30, 30, 30, 0.6);
-    color: white;
-    font-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 60%; /* This scales the icon within the button. Adjust if icons are too small/large. */
     border: none;
-    transition: background-color 0.2s ease-in-out;
+    color: #ced7f4;
+    text-shadow: none;
+    border-radius: 20px 20px 20px 20px;
+    background-color: rgba(30, 30, 46, 0); /* This makes the button background transparent initially */
+    margin: 5px;
+    transition: box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+    /* Optional: If you want a fallback background color that isn't red, add it here. */
+    /* background-color: rgba(50, 50, 70, 0.5); */
 }
 
 button:hover {
-    background-color: rgba(50, 50, 50, 0.8);
+    background-color: rgba(49, 50, 68, 0.1); /* This is a very subtle change, adjust if needed */
 }
+
+/* --- Specific button styles for your icons --- */
+
+#reboot {
+    background-image: image(url("/home/sebastian/dotfiles/miscelaneous/WlogoutIcons/arrows-rotate-solid.svg"));
+}
+/* If you have a specific hover icon for reboot, put its path here: */
+/* #reboot:focus {
+    background-image: image(url("/home/sebastian/dotfiles/miscelaneous/WlogoutIcons/arrows-rotate-solid-hover.svg"));
+} */
+
+
+#shutdown {
+    background-image: image(url("/home/sebastian/dotfiles/miscelaneous/WlogoutIcons/power-off-solid.svg"));
+}
+/* If you have a specific hover icon for shutdown: */
+/* #shutdown:focus {
+    background-image: image(url("/home/sebastian/dotfiles/miscelaneous/WlogoutIcons/power-off-solid-hover.svg"));
+} */
+
+
+#logout {
+    background-image: image(url("/home/sebastian/dotfiles/miscelaneous/WlogoutIcons/right-from-bracket-solid.svg"));
+}
+/* If you have a specific hover icon for logout: */
+/* #logout:focus {
+    background-image: image(url("/home/sebastian/dotfiles/miscelaneous/WlogoutIcons/right-from-bracket-solid-hover.svg"));
+} */
+
+/* Add any other buttons here if you expand your wlogout config */
+/*
+#lock {
+    background-image: image(url("/home/sebastian/dotfiles/miscelaneous/WlogoutIcons/lock-solid.svg"));
+}
+#suspend {
+    background-image: image(url("/home/sebastian/dotfiles/miscelaneous/WlogoutIcons/sleep-solid.svg"));
+}
+*/
