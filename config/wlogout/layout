@@ -1,34 +1,18 @@
 {
-    "label" : "lock",
-    "action" : "swaylock",
-    "text" : "Lock",
-    "keybind" : "l"
-}
-
-{
-    "label" : "logout",
-    "action" : "sudo pkill -u $USER",
-    "text" : "Logout",
-    "keybind" : "e"
-}
-
-{
     "label" : "shutdown",
     "action" : "poweroff",
     "text" : "Shutdown",
     "keybind" : "s"
-}
-
+},
+{
+    "label" : "logout",
+    "action" : "hyprctl dispatch exit",
+    "text" : "Logout",
+    "keybind" : "l"
+},
 {
     "label" : "reboot",
     "action" : "reboot",
     "text" : "Reboot",
     "keybind" : "r"
-}
-
-{
-    "label" : "suspend",
-    "action" : "suspend",
-    "text" : "Suspend",
-    "keybind" : "u"
 }

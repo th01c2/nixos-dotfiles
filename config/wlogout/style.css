@@ -1,0 +1,19 @@
+window {
+    background-color: rgba(0, 0, 0, 0.3); /* transparent background */
+}
+
+button {
+    min-width: 100px;
+    min-height: 100px;
+    margin: 10px;
+    border-radius: 12px;
+    background-color: rgba(30, 30, 30, 0.6);
+    color: white;
+    font-size: 14px;
+    border: none;
+    transition: background-color 0.2s ease-in-out;
+}
+
+button:hover {
+    background-color: rgba(50, 50, 50, 0.8);
+}
