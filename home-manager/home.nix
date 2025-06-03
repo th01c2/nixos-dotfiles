@@ -34,10 +34,8 @@
     # Wofi Config
     ".config/wofi/config".source = ../config/wofi/config;
 
-    # Wlogout
-    ".config/wlogout/layout".source = ../config/wlogout/layout;
-    ".config/wlogout/style.css".source = ../config/wlogout/style.css;
-    ".config/wlogout/assets/power-off-solid.svg".source = "../icons/Wlogout/power-off-solid.svg";
+    # Shutdown Menu
+    ".config/nwg-bar/bar.json".source = ../config/nwg-bar/bar.json;
   };
 
   programs.home-manager.enable = true;

@@ -1,0 +1,17 @@
+[
+ {
+   "label": "Logout",
+   "exec": "hyprctl dispatch exit",
+   "icon": "/home/sebastian/dotfiles/icons/nwg-bar/right-from-bracket-solid.svg"
+ },
+ {
+   "label": "Reboot",
+   "exec": "reboot",
+   "icon": "/home/sebastian/dotfiles/icons/nwg-bar/rotate-solid.svg"
+ },
+ {
+   "label": "Shutdown",
+   "exec": "poweroff",
+   "icon": "/home/sebastian/dotfiles/icons/nwg-bar/power-off-solid.svg"
+ }
+]

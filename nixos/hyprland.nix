@@ -23,7 +23,7 @@
     networkmanagerapplet #Network Button (Neede for Waybar)
     nwg-look	     # Change theme
     hyprcursor    
-    wlogout
+    nwg-bar
   ];
 
   # If using a display manager like greetd or SDDM, configure it here
