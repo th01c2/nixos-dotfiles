@@ -23,13 +23,21 @@
     ".config/hypr/hyprlock.conf".source = ../config/hypr/hyprlock.conf;
     ".config/hypr/hypridle.conf".source = ../config/hypr/hypridle.conf;
     ".config/hypr/hyprpaper.conf".source = ../config/hypr/hyprpaper.conf;
+    
+    # Waybar Config
     ".config/waybar/config".source = ../config/waybar/config;
     ".config/waybar/style.css".source = ../config/waybar/style.css;
+
+    # Foot Terminal Config
     ".config/foot/foot.ini".source = ../config/foot/foot.ini;
+
+    # Wofi Config
     ".config/wofi/config".source = ../config/wofi/config;
+
+    # Wlogout
     ".config/wlogout/layout".source = ../config/wlogout/layout;
     ".config/wlogout/style.css".source = ../config/wlogout/style.css;
-    ".config/wlogout/assets".source = "../icons/Wlogout";
+    ".config/wlogout/assets/power-off-solid.svg".source = "../icons/Wlogout/power-off-solid.svg";
   };
 
   programs.home-manager.enable = true;
