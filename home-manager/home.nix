@@ -29,7 +29,7 @@
     ".config/wofi/config".source = ../config/wofi/config;
     ".config/wlogout/layout".source = ../config/wlogout/layout;
     ".config/wlogout/style.css".source = ../config/wlogout/style.css;
-    ".config/wlogout/assets".source = "${config.home.homeDirectory}/dotfiles/icons/Wlogout";
+    ".config/wlogout/assets".source = "../icons/Wlogout";
   };
 
   programs.home-manager.enable = true;
