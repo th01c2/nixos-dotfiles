@@ -27,6 +27,7 @@
     ".config/waybar/style.css".source = ../config/waybar/style.css;
     ".config/foot/foot.ini".source = ../config/foot/foot.ini;
     ".config/wofi/config".source = ../config/wofi/config;
+    ".config/wlogout/layout".source = ../config/wlogout/layout;
   };
 
   programs.home-manager.enable = true;

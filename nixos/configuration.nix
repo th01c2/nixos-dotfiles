@@ -153,7 +153,13 @@
     jq			    # Json Preview for Yazi
     poppler		    # PDF Renderer for Yazi
     fd 			    # File Searcher for Yazi
-    nemo    
+    nemo
+    libreoffice-qt6-fresh
+    jetbrains.clion
+    cmake
+    gcc
+    ninja
+    gdb
   ];
 
   # ================================
