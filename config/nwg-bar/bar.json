@@ -1,8 +1,8 @@
 [
  {
-   "label": "Logout",
-   "exec": "hyprctl dispatch exit",
-   "icon": "/home/sebastian/dotfiles/icons/nwg-bar/right-from-bracket-solid.svg"
+   "label": "Shutdown",
+   "exec": "poweroff",
+   "icon": "/home/sebastian/dotfiles/icons/nwg-bar/power-off-solid.svg"
  },
  {
    "label": "Reboot",
@@ -10,8 +10,8 @@
    "icon": "/home/sebastian/dotfiles/icons/nwg-bar/rotate-solid.svg"
  },
  {
-   "label": "Shutdown",
-   "exec": "poweroff",
-   "icon": "/home/sebastian/dotfiles/icons/nwg-bar/power-off-solid.svg"
+   "label": "Logout",
+   "exec": "hyprctl dispatch exit",
+   "icon": "/home/sebastian/dotfiles/icons/nwg-bar/right-from-bracket-solid.svg"
  }
 ]
