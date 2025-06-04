@@ -148,6 +148,7 @@
 
     "custom/powermenu": {
       "format": " ",
-      "on-click": "nwg-bar"
+      "on-click": "nwg-bar",
+      "tooltip": false
     }
 }

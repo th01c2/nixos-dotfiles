@@ -43,6 +43,7 @@
 
     # Shutdown Menu
     ".config/nwg-bar/bar.json".source = ../config/nwg-bar/bar.json;
+    ".config/nwg-bar/style.css".source = ../config/nwg-bar/style.css;
   };
 
   programs.home-manager.enable = true;
