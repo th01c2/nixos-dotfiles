@@ -125,17 +125,23 @@
   # Programs
   # ================================
   programs.firefox.enable = true;
+  programs.thunar.enable = true;
 
   # ================================
   # System Services
   # ================================
   services.gvfs.enable = true;                      # Filesystem support
+  services.tumbler.enable = true; 		    # Thumbnail support for images
   services.power-profiles-daemon.enable = true;     # Power profiles
 
   # ================================
   # System Packages
   # ================================
   environment.systemPackages = with pkgs; [
+    file-roller  # or xarchiver
+    p7zip
+    unrar
+    unzip
     android-tools           # ADB & Fastboot
     foot                    # Terminal
     ffmpeg                  # Media encoder/decoder
@@ -148,12 +154,7 @@
     mpv                     # Video player
     pavucontrol             # Audio manager
     payload-dumper-go       # For Android firmware extraction
-    unzip                   # Unarchiver
     zip                     # Archiver
-    jq			    # Json Preview for Yazi
-    poppler		    # PDF Renderer for Yazi
-    fd 			    # File Searcher for Yazi
-    nemo
     libreoffice-qt6-fresh
     jetbrains.clion
     cmake
@@ -161,6 +162,11 @@
     ninja
     gdb
   ];
+
+  programs.thunar.plugins = with pkgs.xfce; [
+	thunar-archive-plugin
+	thunar-volman
+   ];
 
   # ================================
   # Nix Settings

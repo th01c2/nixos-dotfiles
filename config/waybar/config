@@ -19,7 +19,8 @@
         "battery",
         "clock#date",
 	"tray",
-	"custom/recorder_status"
+	"custom/recorder_status",
+	"custom/powermenu"
     ],
 
 
@@ -133,7 +134,7 @@
       "return-type": "json"
     },
 
-     "power-profiles-daemon": {
+    "power-profiles-daemon": {
 	"format": "{icon}",
 	"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
 	"tooltip": true,
@@ -143,5 +144,10 @@
 	"balanced": "   ",
 	"power-saver": "   "
       }
+    },
+
+    "custom/powermenu": {
+      "format": " ",
+      "on-click": "nwg-bar"
     }
 }

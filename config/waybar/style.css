@@ -56,7 +56,6 @@
 #battery,
 #clock,
 #cpu,
-#custom-keyboard-layout,
 #memory,
 #mode,
 #network,
@@ -278,6 +277,13 @@
   100% { opacity: 1; }
 }
  #power-profiles-daemon {
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 4px; /* Add some padding around the tray icons */
+  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
+  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
+}
+#custom-powermenu {
   background-color: rgba(46, 52, 64, 0.5);
   border-radius: 8px;
   padding: 4px; /* Add some padding around the tray icons */

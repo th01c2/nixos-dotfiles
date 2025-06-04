@@ -19,9 +19,16 @@
 
   # Hyprland configuration symlink
   home.file = {
+    # Hyprland Config 
     ".config/hypr/hyprland.conf".source = ../config/hypr/hyprland.conf;
+
+    # Hyprlock Config
     ".config/hypr/hyprlock.conf".source = ../config/hypr/hyprlock.conf;
+
+    # Hypridle Config
     ".config/hypr/hypridle.conf".source = ../config/hypr/hypridle.conf;
+
+    # Hyprpaper Config
     ".config/hypr/hyprpaper.conf".source = ../config/hypr/hyprpaper.conf;
     
     # Waybar Config
