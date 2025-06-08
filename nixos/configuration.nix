@@ -161,6 +161,7 @@
     gcc
     ninja
     gdb
+    texliveFull
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
