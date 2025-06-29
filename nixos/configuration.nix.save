@@ -162,7 +162,7 @@
     ninja
     gdb
     texliveFull
-    android-studio
+    
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
