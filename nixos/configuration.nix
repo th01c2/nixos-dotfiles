@@ -156,14 +156,14 @@
     pavucontrol             # Audio manager
     payload-dumper-go       # For Android firmware extraction
     zip                     # Archiver
-    libreoffice-qt6-fresh
-    jetbrains.clion
-    cmake
-    gcc
-    ninja
-    gdb
-    texliveFull
-    android-studio
+    libreoffice-qt6-fresh   # Libreoffice
+    jetbrains.clion	    # C++ IDE
+    cmake		    # Generates build files
+    gcc			    # Compiles code to executable
+    ninja		    # Fast, efficient builder
+    gdb			    # Debugs program execution
+    texliveFull		    # PDF creator using latex file format
+    android-studio	    # Android Apps Development Studio
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [

@@ -22,8 +22,8 @@
     blueman	     # Bluetooth Daemon
     networkmanagerapplet #Network Button (Neede for Waybar)
     nwg-look	     # Change theme
-    hyprcursor    
-    nwg-bar
+    hyprcursor       # Cursor themes
+    nwg-bar          # Poweroff/Reboot/Suspend button menu
   ];
 
   # If using a display manager like greetd or SDDM, configure it here
