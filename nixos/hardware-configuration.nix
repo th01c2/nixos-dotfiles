@@ -27,7 +27,7 @@
    fileSystems."/media/sebastian/ExternalSSD" =
     { device = "UUID=98CC-20A6";
       fsType = "vfat";
-      options = [ "uid=1000" "gid=100" "umask=0022" "nofail" "x-systemd.automount" ];
+      options = [ "uid=1000" "gid=100" "umask=0022" "nofail"];
     };
 
   swapDevices = [ ];
