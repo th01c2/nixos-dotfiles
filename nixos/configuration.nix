@@ -86,7 +86,7 @@
   users.users.sebastian = {
     isNormalUser = true;
     description = "Sebastian";
-    extraGroups = [ "networkmanager" "wheel" "git" "android-tools" ];
+    extraGroups = [ "networkmanager" "wheel" "git" "android-tools" "storage" ];
     packages = with pkgs; [
       stremio
       telegram-desktop

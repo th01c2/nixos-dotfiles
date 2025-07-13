@@ -24,6 +24,12 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
+   fileSystems."/media/sebastian/ExternalSSD" =
+    { device = "UUID=98CC-20A6";
+      fsType = "vfat";
+      options = [ "uid=1000" "gid=100" "umask=0022" "nofail" "x-systemd.automount" ];
+    };
+
   swapDevices = [ ];
 
   # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
