@@ -92,7 +92,7 @@
 
 #battery.warning.discharging {
     animation-name: blink-warning;
-    animation-duration: 3s;
+    animation-duration: 5s;
 }
 
 #battery.critical.discharging {
