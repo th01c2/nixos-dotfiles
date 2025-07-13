@@ -8,6 +8,7 @@
     ./hardware-configuration.nix      # Hardware config
     ./bash_configuration.nix          # Custom bash settings
     ./hyprland.nix                    # Hyprland-specific config
+    ./syncthing.nix
   ];
 
   # ================================
@@ -151,7 +152,7 @@
     hyprland                # WM
     imv                     # Image viewer
     libnotify               # Notifications
-    lxqt.lxqt-policykit     # PolicyKit agent
+    hyprpolkitagent
     mpv                     # Video player
     pavucontrol             # Audio manager
     payload-dumper-go       # For Android firmware extraction
