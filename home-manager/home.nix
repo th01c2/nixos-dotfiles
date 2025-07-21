@@ -44,6 +44,9 @@
     # Shutdown Menu
     ".config/nwg-bar/bar.json".source = ../config/nwg-bar/bar.json;
     ".config/nwg-bar/style.css".source = ../config/nwg-bar/style.css;
+
+    # Mako notification daemon
+    ".config/mako/config".source = ../config/mako/config; 
   };
 
   programs.home-manager.enable = true;

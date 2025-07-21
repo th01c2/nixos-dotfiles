@@ -24,6 +24,7 @@
     nwg-look	     # Change theme
     hyprcursor       # Cursor themes
     nwg-bar          # Poweroff/Reboot/Suspend button menu
+    mako
   ];
 
   # If using a display manager like greetd or SDDM, configure it here

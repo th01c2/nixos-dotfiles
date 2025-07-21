@@ -187,10 +187,6 @@
   margin-right: 3px; /* Add some right margin to separate from other right-side modules */
 }
 
-#custom-spotify {
-    color: rgb(102, 220, 105);
-}
-
 #temperature {
   background-color: rgba(46, 52, 64, 0.5);
   border-radius: 8px;
@@ -235,7 +231,7 @@
   color: #d8dee9; /* Light gray text color for inactive workspaces */
   border: none;
   border-radius: 4px; /* Rounded corners for the inner "circles" */
-  padding: 2px 6px;
+  padding: 0px 6px;
   margin: 1px;
   min-width: 0px;
   min-height: 0px;
