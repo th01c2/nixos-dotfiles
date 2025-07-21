@@ -158,7 +158,6 @@
     payload-dumper-go       # For Android firmware extraction
     zip                     # Archiver
     libreoffice-qt6-fresh   # Libreoffice
-    jetbrains.clion	    # C++ IDE
     cmake		    # Generates build files
     gcc			    # Compiles code to executable
     ninja		    # Fast, efficient builder

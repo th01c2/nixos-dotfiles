@@ -14,9 +14,9 @@ lines=10
 # Set display mode: normal | dmenu
 mode=normal
 # Hide scrollbar
-no-scrollbar=true
+hide-scroll=true
 # Use fuzzy matching
 allow-markup=false
-case-sensitive=false
+insensitive=true
 allow-images=true
 no-actions=true
