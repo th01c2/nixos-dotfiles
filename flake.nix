@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    stylix.url = "github:nix-community/stylix";
     
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -10,7 +11,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: {
     # Replace 'nixos' with your actual hostname if different
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux"; # Change to "aarch64-linux" if you're on ARM
@@ -18,6 +19,7 @@
       modules = [
         # Import your NixOS configuration
         ./nixos/configuration.nix
+	inputs.stylix.nixosModules.stylix
         
         # Set up Home Manager as a NixOS module
         home-manager.nixosModules.home-manager
@@ -35,8 +37,6 @@
       specialArgs = { inherit inputs; };
     };
 
-    # Optional: Standalone Home Manager configuration
-    # Useful if you want to use Home Manager without NixOS
     homeConfigurations.sebastian = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.x86_64-linux;
       modules = [ ./home-manager/home.nix ];
