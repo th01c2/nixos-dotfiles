@@ -174,7 +174,7 @@
   # ================================
   # Stylix config
   # ================================
-  stylix.image = ./wallpapers/minimal_c.png;
+  stylix.image = ./wallpapers/minimal.png;
 
   # ================================
   # Nix Settings
