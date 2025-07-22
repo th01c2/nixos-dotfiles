@@ -2,7 +2,7 @@
 
 {
   imports = [
-  ../nixos/theme.nix
+    ../nixos/modules/theme.nix
   ];
 
   home.username = "sebastian";
