@@ -172,6 +172,11 @@
    ];
 
   # ================================
+  # Stylix config
+  # ================================
+  stylix.image = ./wallpapers/minimal_c.png;
+
+  # ================================
   # Nix Settings
   # ================================
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
