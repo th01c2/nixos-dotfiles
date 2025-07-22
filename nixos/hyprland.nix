@@ -24,7 +24,8 @@
     nwg-look	     # Change theme
     hyprcursor       # Cursor themes
     nwg-bar          # Poweroff/Reboot/Suspend button menu
-    mako
+    mako	     # Notification daemon for Wayland
+    fuzzel	     # ROFI/WOFI Alternative
   ];
 
   # If using a display manager like greetd or SDDM, configure it here

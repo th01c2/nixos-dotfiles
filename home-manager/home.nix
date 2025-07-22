@@ -46,7 +46,10 @@
     ".config/nwg-bar/style.css".source = ../config/nwg-bar/style.css;
 
     # Mako notification daemon
-    ".config/mako/config".source = ../config/mako/config; 
+    ".config/mako/config".source = ../config/mako/config;
+
+    # Fuzzel Config file
+    ".config/fuzzel/fuzzel.ini".source = ../config/fuzzel/fuzzel.ini;  
   };
 
   programs.home-manager.enable = true;
