@@ -9,6 +9,7 @@
     ./bash_configuration.nix          # Custom bash settings
     ./hyprland.nix                    # Hyprland-specific config
     ./syncthing.nix
+    ././config/themes/stylix.nix
   ];
 
   # ================================
@@ -170,11 +171,6 @@
 	thunar-archive-plugin
 	thunar-volman
    ];
-
-  # ================================
-  # Stylix config
-  # ================================
-  stylix.image = ./wallpapers/minimal.png;
 
   # ================================
   # Nix Settings
