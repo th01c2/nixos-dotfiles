@@ -5,7 +5,7 @@
   programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
-    hyprland
+    kitty
     waybar           # Status bar
     wofi             # Launcher (like rofi)
     grim             # Screenshot tool
