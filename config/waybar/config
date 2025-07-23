@@ -8,7 +8,7 @@
 	"hyprland/window"
     ],
     "modules-center": [
-        "clock#date",
+	"clock#date",
 	"clock#time"
     ],
     "modules-right": [
