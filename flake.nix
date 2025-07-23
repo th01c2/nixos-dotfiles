@@ -15,7 +15,12 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    cachix.url = "github:cachix/cachix";
+
+    hyprland = {
+      url = "github:hyprwm/Hyprland/";
   };
+};
 
   outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: {
     # Replace 'nixos' with your actual hostname if different
