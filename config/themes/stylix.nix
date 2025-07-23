@@ -3,9 +3,8 @@
 {
   stylix = {
     enable = true;
-    autoEnable = false;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
-    image = ../../wallpapers/wallpaper-girl-anime.png;
+    image = ../../wallpapers/minimal.png;
     
     cursor = {
       package = pkgs.bibata-cursors;
@@ -22,8 +21,5 @@
       };
       emoji = { package = pkgs.noto-fonts-emoji; name = "Noto Color Emoji"; };
     };
-    targets = {
-	gtk.enable = true;
-	};
   };
 }

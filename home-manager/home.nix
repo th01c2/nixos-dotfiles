@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+autoEnable = false;{ config, pkgs, ... }:
 
 {
   imports = [
@@ -6,7 +6,7 @@
 
   home.username = "sebastian";
   home.homeDirectory = "/home/sebastian";
-  home.stateVersion = "24.11";
+  home.stateVersion = "25.05";
 
   home.packages = with pkgs; [
   nerd-fonts.fira-code

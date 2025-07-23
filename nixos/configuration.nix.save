@@ -99,7 +99,6 @@
   # Desktop Environment
   # ================================
   services.xserver.enable = false;
-  services.xserver.desktopManager.gnome.enable = false;
 
   # Enable Hyprland compositor
   programs.hyprland.enable = true;
