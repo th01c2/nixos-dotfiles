@@ -9,7 +9,6 @@
     ./bash_configuration.nix          # Custom bash settings
     ./hyprland.nix                    # Hyprland-specific config
     ./syncthing.nix
-    ../config/themes/stylix.nix  
   ];
 
   # ================================
@@ -99,7 +98,6 @@
   # Desktop Environment
   # ================================
   services.xserver.enable = false;
-  services.xserver.desktopManager.gnome.enable = false;
 
   # Enable Hyprland compositor
   programs.hyprland.enable = true;
