@@ -18,7 +18,7 @@
     cachix.url = "github:cachix/cachix";
 
     hyprland = {
-      url = "github:hyprwm/Hyprland/";
+      url = "github:hyprwm/Hyprland/v0.50.1";
   };
 };
 

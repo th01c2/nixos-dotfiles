@@ -22,7 +22,18 @@
   # ================================
   # Graphics Settings (AMD)
   # ================================
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+   enable = true;
+   extraPackages = with pkgs; [
+     libvdpau-va-gl
+     libva
+     libva-vdpau-driver
+    ];
+  };
+    environment.sessionVariables = {
+      LIBVA_DRIVER_NAME = "radeonsi";
+      VDPAU_DRIVER = "radeonsi";
+    };
 
   # Ensure zram module is loaded in early init
   boot.initrd.kernelModules = [ "lz4" ];
