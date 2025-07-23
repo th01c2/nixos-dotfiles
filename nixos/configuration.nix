@@ -9,6 +9,7 @@
     ./bash_configuration.nix          # Custom bash settings
     ./hyprland.nix                    # Hyprland-specific config
     ./syncthing.nix
+    ../config/themes/stylix.nix
   ];
 
   # ================================
@@ -73,7 +74,6 @@
     alsa.support32Bit = true;
     pulse.enable = true;
   };
-  security.rtkit.enable = true;
 
   # ================================
   # Printing

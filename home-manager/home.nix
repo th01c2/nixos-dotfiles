@@ -1,4 +1,4 @@
-autoEnable = false;{ config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [
