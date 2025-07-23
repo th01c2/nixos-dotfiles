@@ -8,7 +8,6 @@
     ./hardware-configuration.nix      # Hardware config
     ./bash_configuration.nix          # Custom bash settings
     ./hyprland.nix                    # Hyprland-specific config
-    ./syncthing.nix
     ../config/themes/stylix.nix
   ];
 
@@ -30,10 +29,6 @@
      libva-vdpau-driver
     ];
   };
-    environment.sessionVariables = {
-      LIBVA_DRIVER_NAME = "radeonsi";
-      VDPAU_DRIVER = "radeonsi";
-    };
 
   # Ensure zram module is loaded in early init
   boot.initrd.kernelModules = [ "lz4" ];
@@ -158,10 +153,11 @@
   # System Packages
   # ================================
   environment.systemPackages = with pkgs; [
-    file-roller  # or xarchiver
-    p7zip
-    unrar
-    unzip
+    file-roller  	    # or xarchiver
+    fastfetch		    # IDK, fastfetch
+    p7zip		    # Do i even need to say something?
+    unrar		    # Top phrase x2
+    unzip		    # Unzip archives
     android-tools           # ADB & Fastboot
     foot                    # Terminal
     ffmpeg                  # Media encoder/decoder
@@ -170,7 +166,7 @@
     hyprland                # WM
     imv                     # Image viewer
     libnotify               # Notifications
-    hyprpolkitagent
+    hyprpolkitagent	    # For apps needing sudo (VsCodium)
     mpv                     # Video player
     pavucontrol             # Audio manager
     payload-dumper-go       # For Android firmware extraction

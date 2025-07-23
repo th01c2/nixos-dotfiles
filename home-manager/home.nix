@@ -18,8 +18,8 @@
   stylix = {
     targets = {
       hyprpaper.enable = true;
-      rofi.enable = true;
       waybar.enable = true;
+      foot.enable = true;
     };
     iconTheme = {
       enable = true;
