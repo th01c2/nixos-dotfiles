@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, inputs, pkgs, ... }:
 
 {
   imports = [
@@ -15,7 +15,18 @@
   font-awesome
 ];
 
-
+  stylix = {
+    targets = {
+      hyprpaper.enable = true;
+      rofi.enable = true;
+      waybar.enable = true;
+    };
+    iconTheme = {
+      enable = true;
+      package = pkgs.gruvbox-plus-icons;
+      dark = "Gruvbox-Plus-Dark";
+    };
+};
   # Hyprland configuration symlink
   home.file = {
     # Hyprland Config 

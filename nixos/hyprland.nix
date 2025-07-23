@@ -5,9 +5,9 @@
   programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
-    kitty
     waybar           # Status bar
     wofi             # Launcher (like rofi)
+    wlsunset
     grim             # Screenshot tool
     slurp            # Select region for screenshots
     wl-screenrec     # Screen Recorder Utility

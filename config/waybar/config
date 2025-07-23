@@ -8,7 +8,8 @@
 	"hyprland/window"
     ],
     "modules-center": [
-        "clock#time"
+        "clock#date",
+	"clock#time"
     ],
     "modules-right": [
 	"power-profiles-daemon",
@@ -17,7 +18,6 @@
         "cpu",
         "temperature",
         "battery",
-        "clock#date",
 	"tray",
 	"custom/recorder_status",
     ],
@@ -34,7 +34,7 @@
             "critical": 15
         },
         // Connected to AC
-        "format": "<span color='#ffffff'> </span> {icon}  {capacity}%", // Icon: bolt
+        "format": "<span color='#ffffff'> </span> {icon}   {capacity}%", // Icon: bolt
         // Not connected to AC
         "format-discharging": "{icon}  {capacity}%",
         "format-icons": [
