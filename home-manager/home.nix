@@ -61,6 +61,21 @@
     # Fuzzel Config file
     ".config/fuzzel/fuzzel.ini".source = ../config/fuzzel/fuzzel.ini;  
   };
+  
+  # ============================
+  # Desktop Entries for Commands
+  home.file = {
+    ".local/share/applications/nix-clean.desktop".text = ''
+      [Desktop Entry]
+      Name=Nix Clean
+      Exec=bash -c 'nix-collect-garbage -d && nix store gc; read'
+      Terminal=true
+      Type=Application
+      Icon=utilities-terminal
+      Categories=System;
+    '';
+
+  };
 
   programs.home-manager.enable = true;
 

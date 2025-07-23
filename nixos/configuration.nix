@@ -178,6 +178,7 @@
     gdb			    # Debugs program execution
     texliveFull		    # PDF creator using latex file format
     android-studio	    # Android Apps Development Studio
+    deluge
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
