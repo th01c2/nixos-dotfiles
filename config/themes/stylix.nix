@@ -1,10 +1,17 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   stylix = {
     enable = true;
     autoEnable = false;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/solarized-light.yaml";
+    image = ../../wallpapers/wallpaper-girl-anime.png;
+    
+    cursor = {
+      package = pkgs.bibata-cursors;
+      name = "Bibata-Modern-Classic";
+      size = 48; # Optional
+    };
 
     fonts = {
       serif = { package = pkgs.dejavu_fonts; name = "DejaVu Serif"; };
@@ -15,15 +22,8 @@
       };
       emoji = { package = pkgs.noto-fonts-emoji; name = "Noto Color Emoji"; };
     };
-
     targets = {
-      hyprland.enable = true;
-      gtk.enable = true;
-      qt.enable = true;
-      waybar.enable = true;
-      rofi.enable = true;
-      kitty.enable = true;
-      hyprland.hyprpaper.enable = config.stylix.image != null;
-    };
+	gtk.enable = true;
+	};
   };
 }
