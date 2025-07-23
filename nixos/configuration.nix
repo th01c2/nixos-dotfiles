@@ -115,6 +115,9 @@
     };
   };
 
+  # Security Poolkit
+  security.rtkit.enable = true;
+
   # ================================
   # Input & Keymap
   # ================================
