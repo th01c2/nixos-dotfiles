@@ -6,8 +6,7 @@
 
   environment.systemPackages = with pkgs; [
     waybar           # Status bar
-    wofi             # Launcher (like rofi)
-    wlsunset
+    wlsunset	     # Blue Light Filter
     grim             # Screenshot tool
     slurp            # Select region for screenshots
     wl-screenrec     # Screen Recorder Utility
