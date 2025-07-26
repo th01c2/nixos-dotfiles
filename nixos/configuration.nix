@@ -197,6 +197,13 @@
   # ==============================
   nixpkgs.config.android_sdk.accept_license = true;
 
+  # ==============================
+  # Ignore Power Button
+  # ==============================
+  services.logind.extraConfig = ''
+    HandlePowerKey=ignore
+  '';
+
   # ================================
   # State Version
   # ================================

@@ -67,7 +67,7 @@
   home.file = {
     ".local/share/applications/nix-clean.desktop".text = ''
       [Desktop Entry]
-      Name=Nix Clean
+      Name=NixOs Clean
       Exec=bash -c 'nix-collect-garbage -d && nix store gc; read'
       Terminal=true
       Type=Application
