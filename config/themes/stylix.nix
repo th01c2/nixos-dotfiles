@@ -66,5 +66,7 @@
     targets = {
       gtk.enable = true;
     };
+
+    polarity = "dark";
   };
 }

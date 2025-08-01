@@ -48,9 +48,6 @@
     # Foot Terminal Config
     ".config/foot/foot.ini".source = ../config/foot/foot.ini;
 
-    # Wofi Config
-    ".config/wofi/config".source = ../config/wofi/config;
-
     # Shutdown Menu
     ".config/nwg-bar/bar.json".source = ../config/nwg-bar/bar.json;
     ".config/nwg-bar/style.css".source = ../config/nwg-bar/style.css;
@@ -68,7 +65,7 @@
     ".local/share/applications/nix-clean.desktop".text = ''
       [Desktop Entry]
       Name=NixOs Clean
-      Exec=bash -c 'nix-collect-garbage -d && nix store gc; read'
+      Exec=bash -c 'sudo nix-collect-garbage -d && nix store gc; read'
       Terminal=true
       Type=Application
       Icon=utilities-terminal
