@@ -172,13 +172,22 @@
     payload-dumper-go       # For Android firmware extraction
     zip                     # Archiver
     libreoffice-qt6-fresh   # Libreoffice
-    cmake		    # Generates build files
-    gcc			    # Compiles code to executable
-    ninja		    # Fast, efficient builder
-    gdb			    # Debugs program execution
     texliveFull		    # PDF creator using latex file format
     android-studio	    # Android Apps Development Studio
-    deluge
+    deluge		    # Torrent Client
+
+    # Commpiling kernels and packages
+    cmake
+    gcc
+    ninja
+    gdb
+    texliveFull
+    distrobox
+    gnumake
+    python3
+    lz4
+    zulu24
+
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
@@ -203,6 +212,14 @@
   services.logind.extraConfig = ''
     HandlePowerKey=ignore
   '';
+
+  # ===============================
+  # Distrobox
+  # ===============================
+  virtualisation.podman = {
+    enable = true;
+    dockerCompat = true;
+  };
 
   # ================================
   # State Version
