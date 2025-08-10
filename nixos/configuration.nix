@@ -14,6 +14,8 @@
   # ================================
   # Boot Settings
   # ================================
+  boot.plymouth.enable = true;
+  boot.plymouth.theme="breeze";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -29,9 +31,6 @@
      libva-vdpau-driver
     ];
   };
-
-  # Ensure zram module is loaded in early init
-  boot.initrd.kernelModules = [ "lz4" ];
 
   # ================================
   # ZRAM Setup
@@ -120,7 +119,7 @@
   services.greetd.enable = true;
   services.greetd.settings = {
     default_session = {
-      command = "tuigreet --time --cmd hyprland";
+      command = "tuigreet --time --remember --cmd hyprland";
       user = "sebastian";
     };
   };
@@ -162,7 +161,7 @@
     foot                    # Terminal
     ffmpeg                  # Media encoder/decoder
     git                     # Version control
-    greetd.tuigreet         # Login TUI
+    tuigreet     	    # Login TUI
     hyprland                # WM
     imv                     # Image viewer
     libnotify               # Notifications
@@ -188,6 +187,10 @@
     lz4
     zulu24
 
+
+   # Miscelaneous
+   python3
+   python313Packages.tkinter
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
