@@ -14,8 +14,6 @@
   # ================================
   # Boot Settings
   # ================================
-  boot.plymouth.enable = true;
-  boot.plymouth.theme="breeze";
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
@@ -31,6 +29,9 @@
      libva-vdpau-driver
     ];
   };
+
+  # Ensure zram module is loaded in early init
+  boot.initrd.kernelModules = [ "lz4" ];
 
   # ================================
   # ZRAM Setup
