@@ -58,7 +58,7 @@
     # Fuzzel Config file
     ".config/fuzzel/fuzzel.ini".source = ../config/fuzzel/fuzzel.ini;  
 
-    ".config/fastfetch/fastfetch.jsonc".source = ../config/fastfetch/fastfetch.jsonc;  
+    ".config/fastfetch/config.jsonc".source = ../config/fastfetch/config.jsonc;  
   };
   
   # ============================
