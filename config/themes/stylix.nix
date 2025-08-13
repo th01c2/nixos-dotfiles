@@ -7,7 +7,8 @@
 {
   # scheme = ./home-config/colors/doomvibrant.yaml;
   stylix = {
-    enable = true;
+    enable = true; # This is to allow stylix to run
+    autoEnable = true; # This is to auto-apply to all the apps
     base16Scheme = {
       base00 = "282828";
       base01 = "282828";
@@ -63,10 +64,6 @@
         desktop = 10;
       };
     };
-    targets = {
-      gtk.enable = true;
-    };
-
     polarity = "dark";
   };
 }

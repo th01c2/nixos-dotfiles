@@ -1,0 +1,120 @@
+{
+  "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+  "logo": {
+    "type": "sixel",
+    "source": "nixos_logo.sixel",
+    "height": 15,
+    "width": 30,
+    "padding": {
+      "top": 1,
+      "right": 1,
+      "left": 1
+    }
+  },
+  "display": {
+    "separator": " : "
+  },
+  "modules": [
+    {
+      "type": "custom",
+      "format": "\u001b[38;2;189;174;147m╭───────┤ \u001b[38;2;189;174;147mHardware Information\u001b[38;2;189;174;147mm ├───────╮\u001b[0m"
+    },
+    {
+      "type": "cpu",
+      "key": "\uf4bc",
+      "keyColor": "38;2;189;174;147"
+    },
+    {
+      "type": "disk",
+      "key": "\uf0a0",
+      "keyColor": "38;2;189;174;147"
+    },
+    {
+      "type": "memory",
+      "key": "\uefc5",
+      "keyColor": "38;2;189;174;147"
+    },
+    {
+      "type": "display",
+      "key": "\udb83\ude51",
+      "keyColor": "38;2;189;174;147"
+    },
+     {
+      "type": "gpu",
+      "key": "\udb85\udd2e",
+      "keyColor": "38;2;189;174;147"
+    },
+    {
+      "type": "poweradapter",
+      "format": "{1}Power: {2}{acStatus}{3}",
+      "key": "\udb85\udc0b",
+      "keyColor": "38;2;189;174;147"
+    },
+    {
+      "type": "custom", // SoftwareStart
+      "format": "\u001b[38;2;189;174;147m╭───────┤ \u001b[38;2;189;174;147mSoftware Information\u001b[38;2;189;174;147m ├───────╮\u001b[0m"
+    },
+    {
+      "type": "title",
+      "key": "\udb81\udfc0",
+      "format": "{1}@{2}",
+      "keyColor": "38;2;189;174;147"
+    },
+    {
+      "type": "os",
+      "key": "\udb83\udec0",
+      "keyColor": "38;2;189;174;147",
+    },
+    {
+      "type": "kernel",
+      "key": "\udb81\udef8",
+      "keyColor": "38;2;189;174;147",
+    },
+    {
+      "type": "initsystem",
+      "key": "\ueed5",
+      "keyColor": "38;2;189;174;147",
+    },
+    {
+      "type": "wm",
+      "key": "\uf2d0",
+      "keyColor": "38;2;189;174;147",
+    },
+    {
+      "type": "terminal",
+      "key": "\udb80\udd8d",
+      "keyColor": "38;2;189;174;147"
+    },
+    {
+      "type": "shell",
+      "key": "\uebca",
+      "keyColor": "38;2;189;174;147"
+    },
+    {
+      "type": "packages",
+      "key": "\udb80\udfd3",
+      "keyColor": "38;2;189;174;147"
+},
+{
+      "type": "localip",
+      "key": "\udb80\udfd3",
+      "keyColor": "38;2;189;174;147"
+},
+{
+      "type": "custom", // MiscStart
+      "format": "\u001b[38;2;189;174;147m╭───────┤ \u001b[38;2;189;174;147mMisc. Information\u001b[38;2;189;174;147mm ├───────╮\u001b[0m"
+    },
+{
+            "type": "command",
+            "key": "\uf1fd",
+            "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); days_difference=$((time_progression / 86400)); echo $days_difference days",
+            "keyColor": "38;2;189;174;147"
+        },
+        {
+      "type": "uptime",
+      "key": "\udb82\udd54",
+      "keyColor": "38;2;189;174;147"
+    },
+    "break",
+  ]
+}
