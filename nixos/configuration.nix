@@ -175,6 +175,9 @@
     texliveFull		    # PDF creator using latex file format
     android-studio	    # Android Apps Development Studio
     deluge		    # Torrent Client
+    thunderbird
+    wasistlos
+    
 
     # Commpiling kernels and packages
     cmake
@@ -187,6 +190,8 @@
     python3
     lz4
     zulu24
+    woeusb-ng
+    ntfs3g
 
 
    # Miscelaneous
