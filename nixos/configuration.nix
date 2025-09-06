@@ -177,7 +177,9 @@
     deluge		    # Torrent Client
     thunderbird
     wasistlos
-    
+    apktool
+    blender
+    unityhub
 
     # Commpiling kernels and packages
     cmake
@@ -192,7 +194,6 @@
     zulu24
     woeusb-ng
     ntfs3g
-
 
    # Miscelaneous
    python3
@@ -218,9 +219,12 @@
   # ==============================
   # Ignore Power Button
   # ==============================
-  services.logind.extraConfig = ''
-    HandlePowerKey=ignore
-  '';
+  services.logind.settings = {
+    Login = {
+      HandlePowerKey = "ignore";
+    };
+  };
+
 
   # ===============================
   # Distrobox
