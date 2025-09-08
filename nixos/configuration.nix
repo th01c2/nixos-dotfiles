@@ -142,6 +142,10 @@
   programs.firefox.enable = true;
   programs.thunar.enable = true;
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "qtwebengine-5.15.19"
+  ];
+
   # ================================
   # System Services
   # ================================
@@ -180,6 +184,8 @@
     apktool
     blender
     unityhub
+    vinegar
+    kdePackages.kdeconnect-kde
 
     # Commpiling kernels and packages
     cmake
