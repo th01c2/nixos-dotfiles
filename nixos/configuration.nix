@@ -8,6 +8,7 @@
     ./hardware-configuration.nix      # Hardware config
     ./bash_configuration.nix          # Custom bash settings
     ./hyprland.nix                    # Hyprland-specific config
+    ./emulator.nix
     ../config/themes/stylix.nix
   ];
 
@@ -141,6 +142,7 @@
   # ================================
   programs.firefox.enable = true;
   programs.thunar.enable = true;
+  services.flatpak.enable = true;
 
   nixpkgs.config.permittedInsecurePackages = [
     "qtwebengine-5.15.19"
@@ -179,13 +181,11 @@
     texliveFull		    # PDF creator using latex file format
     android-studio	    # Android Apps Development Studio
     deluge		    # Torrent Client
-    thunderbird
-    wasistlos
-    apktool
-    blender
-    unityhub
-    vinegar
-    kdePackages.kdeconnect-kde
+    thunderbird		    # Email Client
+    wasistlos		    # Whatsapp
+    apktool		    # Apktool,apk decompiler
+    blender		    # 3D design tool
+    kdePackages.kdeconnect-kde # KDE Connect
 
     # Commpiling kernels and packages
     cmake
