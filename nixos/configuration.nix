@@ -92,7 +92,7 @@
   users.users.sebastian = {
     isNormalUser = true;
     description = "Sebastian";
-    extraGroups = [ "networkmanager" "wheel" "git" "android-tools" "storage" ];
+    extraGroups = [ "networkmanager" "wheel" "git" "android-tools" "storage" "input" ];
     packages = with pkgs; [
       stremio
       telegram-desktop
@@ -159,6 +159,7 @@
   # ================================
   environment.systemPackages = with pkgs; [
     file-roller  	    # or xarchiver
+    file
     fastfetch		    # IDK, fastfetch
     p7zip		    # Do i even need to say something?
     unrar		    # Top phrase x2
@@ -185,6 +186,7 @@
     apktool		    # Apktool,apk decompiler
     blender		    # 3D design tool
     kdePackages.kdeconnect-kde # KDE Connect
+    wireshark
 
     # Commpiling kernels and packages
     cmake
@@ -199,6 +201,8 @@
     zulu24
     woeusb-ng
     ntfs3g
+    apksigner
+    git-lfs
 
    # Miscelaneous
    python3
