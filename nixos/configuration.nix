@@ -108,8 +108,6 @@
   # Enable Hyprland compositor
   programs.hyprland = {
     enable = true;
-    package = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.hyprland;
-    portalPackage = inputs.hyprland.packages.${pkgs.stdenv.hostPlatform.system}.xdg-desktop-portal-hyprland;
 };
 
   # Hyprlock
@@ -143,9 +141,6 @@
   programs.thunar.enable = true;
   services.flatpak.enable = true;
 
-  nixpkgs.config.permittedInsecurePackages = [
-    "qtwebengine-5.15.19"
-  ];
 
   # ================================
   # System Services
@@ -177,7 +172,6 @@
     pavucontrol             # Audio manager
     payload-dumper-go       # For Android firmware extraction
     zip                     # Archiver
-    libreoffice-qt6-fresh   # Libreoffice
     texliveFull		    # PDF creator using latex file format
     android-studio	    # Android Apps Development Studio
     deluge		    # Torrent Client
@@ -185,7 +179,6 @@
     wasistlos		    # Whatsapp
     apktool		    # Apktool,apk decompiler
     blender		    # 3D design tool
-    kdePackages.kdeconnect-kde # KDE Connect
     wireshark
 
     # Commpiling kernels and packages
@@ -202,7 +195,6 @@
     woeusb-ng
     ntfs3g
     apksigner
-    git-lfs
 
    # Miscelaneous
    python3

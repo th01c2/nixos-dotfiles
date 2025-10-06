@@ -16,10 +16,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     cachix.url = "github:cachix/cachix";
-
-    hyprland = {
-      url = "github:hyprwm/Hyprland/";
-  };
 };
 
   outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: {
