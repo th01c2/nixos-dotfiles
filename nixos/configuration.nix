@@ -141,6 +141,9 @@
   programs.thunar.enable = true;
   services.flatpak.enable = true;
 
+  nixpkgs.config.permittedInsecurePackages = [
+    "qtwebengine-6.9.2"
+  ];
 
   # ================================
   # System Services
