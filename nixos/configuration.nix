@@ -7,6 +7,7 @@
   imports = [
     ./hardware-configuration.nix      # Hardware config
     ./bash_configuration.nix          # Custom bash settings
+    ./build-tools.nix		      # Build Tools for Compiling
     ./hyprland.nix                    # Hyprland-specific config
     ../config/themes/stylix.nix
   ];
@@ -17,6 +18,10 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+  boot.kernelModules = [ "v4l2loopback" ];
+
 
   # ================================
   # Graphics Settings (AMD)
@@ -38,6 +43,11 @@
   # ================================
   zramSwap.enable = true;
   zramSwap.algorithm = "lz4";
+  
+  swapDevices = [{
+    device = "/swapfile";
+    size = 16 * 1024; # 16GB
+  }];
 
   # ================================
   # System Identity & Locale
@@ -161,6 +171,8 @@
     foot                    # Terminal
     ffmpeg                  # Media encoder/decoder
     git                     # Version control
+    curl		    # Fetch Files
+    wget		    # Fetch Files 2.0
     tuigreet     	    # Login TUI
     hyprland                # WM
     imv                     # Image viewer
@@ -178,21 +190,17 @@
     apktool		    # Apktool,apk decompiler
     blender		    # 3D design tool
     wireshark
-
-    # Commpiling kernels and packages
-    cmake
-    gcc
-    ninja
-    gdb
     texliveFull
     distrobox
-    gnumake
-    python3
-    lz4
     zulu24
     woeusb-ng
     ntfs3g
     apksigner
+
+   # Ubuntu Touch
+   qemu-utils
+   simg2img
+   binutils
 
    # Miscelaneous
    python3
