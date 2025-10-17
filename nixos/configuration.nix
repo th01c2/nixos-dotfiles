@@ -22,31 +22,41 @@
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
   boot.kernelModules = [ "v4l2loopback" ];
 
+  # Kernel parameters for AMD Vega 8 stability
+  boot.kernelParams = [
+    "amdgpu.abmlevel=0"       # Disable backlight flickering on Vega
+    "amdgpu.dcdebugmask=0x10" # Fix Wayland freezes on Vega
+  ];
 
   # ================================
   # Graphics Settings (AMD)
   # ================================
   hardware.graphics = {
-   enable = true;
-   extraPackages = with pkgs; [
-     libvdpau-va-gl
-     libva
-     libva-vdpau-driver
+    enable = true;
+    enable32Bit = true;
+    extraPackages = with pkgs; [
+      libvdpau-va-gl     # VA-API to VDPAU wrapper for video decode
+      libva              # Video Acceleration API support
+      libva-vdpau-driver # VDPAU backend for VA-API
+      rocmPackages.clr.icd # AMD HIP compute support
     ];
   };
 
   # Ensure zram module is loaded in early init
-  boot.initrd.kernelModules = [ "lz4" ];
+  boot.initrd.kernelModules = [ "lz4" "amdgpu" ];
 
   # ================================
   # ZRAM Setup
   # ================================
   zramSwap.enable = true;
   zramSwap.algorithm = "lz4";
+  zramSwap.priority = 100;
+  zramSwap.memoryPercent = 50; # Use 50% of RAM (8GB with 16GB total)
   
   swapDevices = [{
     device = "/swapfile";
     size = 16 * 1024; # 16GB
+    priority = 10;
   }];
 
   # ================================
@@ -117,7 +127,7 @@
   # Enable Hyprland compositor
   programs.hyprland = {
     enable = true;
-};
+  };
 
   # Hyprlock
   programs.hyprlock.enable = true;
@@ -161,56 +171,50 @@
   # System Packages
   # ================================
   environment.systemPackages = with pkgs; [
-    file-roller  	    # or xarchiver
+    file-roller  	    # Archive manager
     file
-    fastfetch		    # IDK, fastfetch
-    p7zip		    # Do i even need to say something?
-    unrar		    # Top phrase x2
-    unzip		    # Unzip archives
+    fastfetch		    # System info display
+    p7zip		    # 7z compression
+    unrar		    # RAR extraction
+    unzip		    # ZIP extraction
     android-tools           # ADB & Fastboot
-    foot                    # Terminal
+    foot                    # GPU terminal
     ffmpeg                  # Media encoder/decoder
     git                     # Version control
-    curl		    # Fetch Files
-    wget		    # Fetch Files 2.0
+    curl		    # Download files
+    wget		    # Download files alt
     tuigreet     	    # Login TUI
     hyprland                # WM
     imv                     # Image viewer
     libnotify               # Notifications
-    hyprpolkitagent	    # For apps needing sudo (VsCodium)
+    hyprpolkitagent	    # Sudo apps agent
     mpv                     # Video player
     pavucontrol             # Audio manager
-    payload-dumper-go       # For Android firmware extraction
+    payload-dumper-go       # Android firmware extract
     zip                     # Archiver
-    texliveFull		    # PDF creator using latex file format
-    android-studio	    # Android Apps Development Studio
-    deluge		    # Torrent Client
-    thunderbird		    # Email Client
-    wasistlos		    # Whatsapp
-    apktool		    # Apktool,apk decompiler
-    blender		    # 3D design tool
-    wireshark
-    texliveFull
-    distrobox
-    zulu24
-    woeusb-ng
-    ntfs3g
-    apksigner
-
-   # Ubuntu Touch
-   qemu-utils
-   simg2img
-   binutils
-
-   # Miscelaneous
-   python3
-   python313Packages.tkinter
+    texliveFull		    # LaTeX for PDF
+    android-studio	    # Android dev IDE
+    deluge		    # Torrent client
+    thunderbird		    # Email client
+    wasistlos		    # WhatsApp client
+    apktool		    # APK decompiler
+    blender		    # 3D design
+    wireshark               # Network analyzer
+    distrobox               # Container wrapper
+    zulu24                  # Java runtime
+    woeusb-ng               # Windows USB creator
+    ntfs3g                  # NTFS support
+    apksigner               # APK signer
+    qemu-utils              # QEMU utilities
+    simg2img                # Android image converter
+    python3                 # Python runtime
+    python313Packages.tkinter # Python GUI toolkit
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
-	thunar-archive-plugin
-	thunar-volman
-   ];
+	thunar-archive-plugin   # Archive integration for Thunar
+	thunar-volman           # Volume management for Thunar
+  ];
 
   # ================================
   # Nix Settings
@@ -231,7 +235,6 @@
       HandlePowerKey = "ignore";
     };
   };
-
 
   # ===============================
   # Distrobox
