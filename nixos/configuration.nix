@@ -171,44 +171,44 @@
   # System Packages
   # ================================
   environment.systemPackages = with pkgs; [
-    file-roller  	    # Archive manager
-    file
-    fastfetch		    # System info display
-    p7zip		    # 7z compression
-    unrar		    # RAR extraction
-    unzip		    # ZIP extraction
-    android-tools           # ADB & Fastboot
-    foot                    # GPU terminal
-    ffmpeg                  # Media encoder/decoder
-    git                     # Version control
-    curl		    # Download files
-    wget		    # Download files alt
-    tuigreet     	    # Login TUI
-    hyprland                # WM
-    imv                     # Image viewer
-    libnotify               # Notifications
-    hyprpolkitagent	    # Sudo apps agent
-    mpv                     # Video player
-    pavucontrol             # Audio manager
-    payload-dumper-go       # Android firmware extract
-    zip                     # Archiver
-    texliveFull		    # LaTeX for PDF
-    android-studio	    # Android dev IDE
-    deluge		    # Torrent client
-    thunderbird		    # Email client
-    wasistlos		    # WhatsApp client
-    apktool		    # APK decompiler
-    blender		    # 3D design
-    wireshark               # Network analyzer
-    distrobox               # Container wrapper
-    zulu24                  # Java runtime
-    woeusb-ng               # Windows USB creator
-    ntfs3g                  # NTFS support
-    apksigner               # APK signer
-    qemu-utils              # QEMU utilities
-    simg2img                # Android image converter
-    python3                 # Python runtime
-    python313Packages.tkinter # Python GUI toolkit
+    file-roller  	    # GUI archive manager for extracting/creating archives
+    file                    # Identify file types and MIME types
+    fastfetch		    # Displays system info (CPU, GPU, OS, RAM, etc)
+    p7zip		    # 7z compression format support
+    unrar		    # Extract RAR archives
+    unzip		    # Extract ZIP archives
+    android-tools           # ADB and Fastboot for Android device control
+    foot                    # GPU-accelerated terminal emulator
+    ffmpeg                  # Media encoding, decoding, and conversion tool
+    git                     # Version control system
+    curl		    # Download files from URLs via CLI
+    wget		    # Alternative CLI file downloader
+    tuigreet     	    # Text-based login manager
+    hyprland                # Wayland compositor/window manager
+    imv                     # Lightweight image viewer
+    libnotify               # Desktop notification system
+    hyprpolkitagent	    # Polkit authentication agent for sudo prompts
+    mpv                     # Lightweight video/audio player
+    pavucontrol             # Pulseaudio volume control GUI
+    payload-dumper-go       # Extract Android firmware images
+    zip                     # Create and compress ZIP archives
+    texliveFull		    # LaTeX document preparation system for PDFs
+    android-studio	    # Android app development IDE
+    deluge		    # Torrent client for downloading torrents
+    thunderbird		    # Email and calendar client
+    wasistlos		    # WhatsApp messaging client
+    apktool		    # Decompile and repackage Android APK files
+    blender		    # 3D modeling, animation, and rendering software
+    wireshark               # Network packet analyzer and sniffer
+    distrobox               # Run other Linux distros in containers
+    zulu24                  # OpenJDK 24 Java runtime environment
+    woeusb-ng               # Create Windows bootable USB drives
+    ntfs3g                  # Read/write NTFS filesystem support
+    apksigner               # Sign and verify Android APK files
+    qemu-utils              # QEMU disk image utilities and converters
+    simg2img                # Convert Android sparse images to regular images
+    python3                 # Python 3 programming language runtime
+    python313Packages.tkinter # Python GUI toolkit for creating GUIs
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
