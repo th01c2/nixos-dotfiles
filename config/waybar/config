@@ -5,7 +5,7 @@
     "height": "100%",
 
     "modules-left": [
-        "hyprland/workspaces",
+        "hyprland/workspaces"
     ],
 
     "modules-center": [
@@ -93,7 +93,7 @@
 
     "hyprland/workspaces": {
         "all-outputs": false,
-        "disable-scroll": true,
+        "disable-scroll": true
     },
 
     "pulseaudio": {
