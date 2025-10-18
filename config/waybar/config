@@ -1,31 +1,22 @@
 {
     "layer": "top",
-    "position": "top",
-    "height": 39,
+    "position": "right",
+    "width": 34,
+    "height": "100%",
 
     "modules-left": [
         "hyprland/workspaces",
-	"hyprland/window"
     ],
+
     "modules-center": [
-	"clock#date",
-	"clock#time"
+        "group/clock-stack"
     ],
+
     "modules-right": [
-	"power-profiles-daemon",
-	"pulseaudio",
-        "memory",
-        "cpu",
-        "temperature",
-        "battery",
-	"tray",
-	"custom/recorder_status",
+        "group/system-stats",
+        "tray",
+        "custom/recorder_status"
     ],
-
-
-    // -------------------------------------------------------------------------
-    // Modules
-    // -------------------------------------------------------------------------
 
     "battery": {
         "interval": 3,
@@ -33,65 +24,81 @@
             "warning": 30,
             "critical": 15
         },
-        // Connected to AC
-        "format": "<span color='#ffffff'> </span> {icon}   {capacity}%", // Icon: bolt
-        // Not connected to AC
-        "format-discharging": "{icon}  {capacity}%",
+        "format": "{icon}",
+        "format-discharging": "{icon}",
         "format-icons": [
-            "", // Icon: battery-full
-            "", // Icon: battery-three-quarters
-            "", // Icon: battery-half
-            "", // Icon: battery-quarter
-            ""  // Icon: battery-empty
-        ],
-        "tooltip": true
+            "", "", "", "", ""
+        ]
     },
 
-    "clock#time": {
+    "group/system-stats": {
+        "orientation": "vertical",
+        "modules": [
+            "power-profiles-daemon",
+            "pulseaudio",
+            "memory",
+            "cpu",
+            "temperature",
+            "battery"
+        ]
+    },
+
+    "group/clock-stack": {
+      "orientation": "vertical",
+      "modules": [
+        "clock#hour",
+        "clock#minute",
+        "clock#second"
+    ]
+},
+    "clock#hour": {
         "interval": 1,
-        "format": " {:%H:%M:%S}",
+        "format": "{:%H}",
+        "tooltip": false
+    },
+    "clock#minute": {
+        "interval": 1,
+        "format": "{:%M}",
+        "tooltip": false
+    },
+    "clock#second": {
+        "interval": 1,
+        "format": "{:%S}",
         "tooltip": false
     },
 
     "clock#date": {
-      "interval": 10,
-      "format": "   {:%e %b %Y}", // Icon: calendar-alt
-      "tooltip-format": "{:%e %B %Y}"
+        "interval": 10,
+        "format": "",
+        "tooltip-format": "{:%e %B %Y}"
     },
 
     "cpu": {
         "interval": 3,
-        "format": "   {usage}%", // Icon: microchip
-        "states": {
-          "warning": 70,
-          "critical": 90
-        }
-    },
-
-    "memory": {
-        "interval": 3,
-        "format": "  {}%", // Icon: memory
+        "format": "",
         "states": {
             "warning": 70,
             "critical": 90
         }
     },
 
-    "hyprland/window": {
-        "format": " {}",
-        "max-length": 40
+    "memory": {
+        "interval": 3,
+        "format": " ",
+        "states": {
+            "warning": 70,
+            "critical": 90
+        }
     },
 
     "hyprland/workspaces": {
         "all-outputs": false,
         "disable-scroll": true,
-        "format": " {name}",
     },
 
     "pulseaudio": {
-        //"scroll-step": 1,
-        "format": " {icon}   {volume}%",
-        "format-bluetooth": " {icon}  {volume}%",
+        "format": "{icon}",
+        "format-bluetooth": "{icon}",
         "format-muted": "",
         "format-icons": {
             "headphones": "",
@@ -106,42 +113,43 @@
     },
 
     "temperature": {
-      "critical-threshold": 80,
-      "interval": 5,
-      "format": " {icon}  {temperatureC}°C",
-      "format-icons": [
-          "", // Icon: temperature-empty
-          "", // Icon: temperature-quarter
-          "", // Icon: temperature-half
-          "", // Icon: temperature-three-quarters
-          ""  // Icon: temperature-full
-      ],
-      "tooltip": true
+        "critical-threshold": 80,
+        "interval": 5,
+        "format": " {icon}",
+        "format-icons": [
+            "", "", "", "", ""
+        ],
+        "tooltip": true
     },
 
     "tray": {
-        "icon-size": 21,
-        "spacing": 10
+        "icon-size": 20,
+        "spacing": 5
     },
 
     "custom/recorder_status": {
-      "format": "{}",
-      "tooltip": false,
-      "interval": 2,
-      "exec": "if pgrep -x wl-screenrec > /dev/null; then echo '{\"text\": \"🔴\", \"class\": \"recording\"}'; else echo '{\"text\": \"\", \"class\": \"not-recording\"}'; fi",
-      "on-click": "pkill wl-screenrec",
-      "return-type": "json"
+        "format": "{}",
+        "tooltip": false,
+        "interval": 2,
+        "exec": "if pgrep -x wl-screenrec > /dev/null; then echo '{\"text\": \"🔴\", \"class\": \"recording\"}'; else echo '{\"text\": \"\", \"class\": \"not-recording\"}'; fi",
+        "on-click": "pkill wl-screenrec",
+        "return-type": "json"
     },
 
     "power-profiles-daemon": {
-	"format": "{icon}",
-	"tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-	"tooltip": true,
-	"format-icons": {
-	"default": "  ",
-	"performance": "  ",
-	"balanced": "   ",
-	"power-saver": "   "
-      }
+        "format": " {icon}",
+        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
+        "tooltip": true,
+        "format-icons": {
+            "default": "",
+            "performance": "",
+            "balanced": "",
+            "power-saver": ""
+        }
+    },
+    
+    "custom/nixosicon": {
+        "format": "",
+        "tooltip": false
     }
 }

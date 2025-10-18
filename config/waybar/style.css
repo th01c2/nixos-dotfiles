@@ -1,9 +1,5 @@
 /* =============================================================================
- *
- * Waybar configuration
- *
- * Configuration reference: https://github.com/Alexays/Waybar/wiki/Configuration
- *
+ * Waybar configuration (cleaned)
  * =========================================================================== */
 
 /* -----------------------------------------------------------------------------
@@ -11,279 +7,192 @@
  * -------------------------------------------------------------------------- */
 
 @keyframes blink-warning {
-    70% {
-        color: white;
-    }
-
-    to {
-        color: orange;
-    }
+  70% {
+    color: white;
+  }
+  to {
+    color: orange;
+  }
 }
 
 @keyframes blink-critical {
-    70% {
-      color: white;
-    }
-
-    to {
-        color: red;
-    }
+  70% {
+    color: white;
+  }
+  to {
+    color: red;
+  }
 }
 
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.2;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 /* -----------------------------------------------------------------------------
  * Base styles
  * -------------------------------------------------------------------------- */
 
-/* Reset all styles */
 * {
-    border: none;
-    border-radius: 0;
-    min-height: 0;
-    margin: 0;
-    padding: 0;
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+  margin: 0;
+  padding: 0;
 }
 
-/* The whole bar */
 #waybar {
-  background-color: transparent; /* RGBA for #323232 with 70% opacity */
+  background-color: rgba(46, 52, 64, 0.4);
   color: white;
   font-family: Cantarell, Noto Sans, sans-serif;
   font-size: 13px;
 }
-/* Each module */
-#power-profiles-daemon
-#battery,
-#clock,
-#cpu,
-#memory,
-#mode,
-#network,
-#pulseaudio,
-#temperature,
-#custom-recorder_status,
-#tray {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
 
 /* -----------------------------------------------------------------------------
- * Module styles
+ * Modules
  * -------------------------------------------------------------------------- */
 
 #battery {
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  background-color: rgba(46, 52, 64, 0.5);
-  border-radius: 8px;
-  padding: 4px; /* Add some padding around the tray icons */
-  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-  margin-right: 10px; /* Add some right margin to separate from other right-side modules */
 }
 
 #battery.warning {
-    color: orange;
+  color: orange;
 }
 
 #battery.critical {
-    color: red;
+  color: red;
 }
 
 #battery.warning.discharging {
-    animation-name: blink-warning;
-    animation-duration: 5s;
+  animation-name: blink-warning;
+  animation-duration: 5s;
 }
 
 #battery.critical.discharging {
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#clock {
-    font-weight: bold;
-    font-family: "JetBrains Mono", "Fira Code", monospace;
-    background-color: rgba(46, 52, 64, 0.5);
-    border-radius: 8px;
-    padding: 4px; /* Add some padding around the tray icons */
-    margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-    margin-right: 10px; /* Add some right margin to separate from other right-side modules */
-}
-
-#cpu {
-  background-color: rgba(46, 52, 64, 0.5);
-  border-radius: 8px;
-  padding: 4px; /* Add some padding around the tray icons */
-  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
+  animation-name: blink-critical;
+  animation-duration: 2s;
 }
 
 #cpu.warning {
-    color: orange;
+  color: orange;
 }
 
 #cpu.critical {
-    color: red;
-}
-
-#memory {
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-direction: alternate;
-  background-color: rgba(46, 52, 64, 0.5);
-  border-radius: 8px;
-  padding: 4px; /* Add some padding around the tray icons */
-  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
+  color: red;
 }
 
 #memory.warning {
-    color: orange;
+  color: orange;
 }
 
 #memory.critical {
-    color: red;
-    animation-name: blink-critical;
-    animation-duration: 2s;
-}
-
-#mode {
-    background: #64727D;
-    border-top: 2px solid white;
-    /* To compensate for the top border and still have vertical centering */
-    padding-bottom: 2px;
-}
-
-#network {
-  background-color: rgba(46, 52, 64, 0.5);
-  border-radius: 8px;
-  padding: 4px; /* Add some padding around the tray icons */
-  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
-}
-
-#network.disconnected {
-  color: orange;
-  background-color: rgba(46, 52, 64, 0.5);
-  border-radius: 8px;
-  padding: 4px; /* Add some padding around the tray icons */
-  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
-}
-
-#pulseaudio {
-  background-color: rgba(46, 52, 64, 0.5);
-  border-radius: 8px;
-  padding: 4px; /* Add some padding around the tray icons */
-  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
-}
-
-#pulseaudio.muted {
-  background-color: rgba(46, 52, 64, 0.5);
-  border-radius: 8px;
-  padding: 4px; /* Add some padding around the tray icons */
-  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
-}
-
-#temperature {
-  background-color: rgba(46, 52, 64, 0.5);
-  border-radius: 8px;
-  padding: 4px; /* Add some padding around the tray icons */
-  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
+  color: red;
+  animation-name: blink-critical;
+  animation-duration: 2s;
 }
 
 #temperature.critical {
-    color: red;
+  color: red;
+}
+
+#pulseaudio.muted {
+  opacity: 0.5;
 }
 
 #tray {
   background-color: rgba(46, 52, 64, 0.5);
   border-radius: 8px;
-  padding: 4px; /* Add some padding around the tray icons */
-  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
+  padding: 2px;
+  margin-bottom: 8px;
 }
 
 #tray > .needs-attention {
-  -gtk-icon-shadow: none;
-  color: #ebcb8b; /* Example color for attention icons */
-  padding: 0px;
-}
-#window {
-    font-weight: bold;
+  color: #ebcb8b;
+  background-color: rgba(46, 52, 64, 0.5);
+  border-radius: 8px;
+  padding: 2px;
+  margin-bottom: 8px;
 }
 
-/* Configuration for the whole workspaces module */
 #workspaces {
-  background-color: rgba(46, 52, 64, 0.5); /* RGBA for #2e3440 with 50% opacity */
-  border-radius: 8px; /* Slightly less rounded corners for the outer container */
-  padding: 4px; /* Adjusted padding inside the outer rounded square */
-  margin: 4px 5px; /* Slightly smaller margin around the whole module */
-  margin-left: 15px; /* Add some left margin */
+  background-color: rgba(46, 52, 64, 0.4);
+  border-radius: 7px;
+  padding: 1px;
+  margin: 5px 3px;
 }
 
-/* Styling for each individual workspace button */
 #workspaces button {
-  background-color: transparent; /* Inner buttons remain transparent */
-  color: #d8dee9; /* Light gray text color for inactive workspaces */
+  background-color: transparent;
+  color: #fff;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 1.2em;
   border: none;
-  border-radius: 4px; /* Rounded corners for the inner "circles" */
-  padding: 0px 6px;
-  margin: 1px;
-  min-width: 0px;
-  min-height: 0px;
+  border-radius: 8px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  margin-left: 2px;
+  margin-right: 2px;
+  padding: 1px;
 }
 
-/* Styling for the active workspace */
 #workspaces button.active {
-  background-color: #6a6a6a; /* A soft green for the active background */
-  color: #ffffff; /* Dark text color for the active workspace number */
+  background-color: #6a6a6a;
+  color: #ffffff;
 }
 
-/* Styling for urgent workspaces */
 #workspaces button.urgent {
-  background-color: #bf616a; /* A vibrant red for urgent workspaces */
-  color: #f8f8f2; /* Light text for urgent workspaces */
+  background-color: #bf616a;
+  color: #f8f8f2;
 }
 
-/* Recorder module base style */
-#custom-recorder_status {
+#recorder_status {
   font-size: 16px;
-  padding: 0 8px;
+  padding: 0 2px;
 }
 
-/* Blinking red when recording */
-#custom-recorder_status.recording {
+#recorder_status.recording {
   animation: blink 2s infinite;
   color: red;
 }
 
-/* White when not recording */
-#custom-recorder_status.not-recording {
+#recorder_status.not-recording {
   color: white;
 }
 
-/* Blinking animation */
-@keyframes blink {
-  0% { opacity: 1; }
-  50% { opacity: 0.2; }
-  100% { opacity: 1; }
+#power-profiles-daemon {
+  margin-bottom: 5px;
 }
- #power-profiles-daemon {
+
+.modules-center {
   background-color: rgba(46, 52, 64, 0.5);
   border-radius: 8px;
-  padding: 4px; /* Add some padding around the tray icons */
-  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
+  padding: 1px;
+  margin-bottom: 8px;
 }
-#custom-powermenu {
+
+.modules-center label {
+  color: #fff;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 2px 2px;
+  background: none;
+  box-shadow: none;
+  margin: 0;
+}
+
+#system-stats {
   background-color: rgba(46, 52, 64, 0.5);
   border-radius: 8px;
-  padding: 4px; /* Add some padding around the tray icons */
-  margin: 4px 5px; /* Add some margin for spacing from other modules and edges */
-  margin-right: 3px; /* Add some right margin to separate from other right-side modules */
+  margin-bottom: 7px;
 }
