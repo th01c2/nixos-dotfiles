@@ -13,9 +13,11 @@
     ],
 
     "modules-right": [
+        "custom/recorder_status",
         "group/system-stats",
-        "tray",
-        "custom/recorder_status"
+        "pulseaudio",
+        "group/connection-programs",
+        "battery"
     ],
 
     "battery": {
@@ -24,22 +26,48 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{icon}",
-        "format-discharging": "{icon}",
+        "format": " {icon}\n{capacity}%",
+        "format-discharging": " {icon}\n{capacity}%",
+        "format-charging": " 󰂄\n{capacity}%",
         "format-icons": [
-            "", "", "", "", ""
+           "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"
         ]
+    },
+
+     "group/connection-programs": {
+        "orientation": "vertical",
+        "modules": [
+            "network",
+            "bluetooth"
+        ]
+    },
+
+     "bluetooth": {
+         "interval": 5,
+         "format-on": "󰂯",
+         "format-off": "󰂲",
+         "exec": "blueman-manager",
+         "tooltip": true,
+         "on-click": "blueman-manager"
+    },
+
+    "network": {
+        "interval": 3,
+        "format-wifi": "{icon}",
+         "format-disconnected": "󰤭",
+         "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
+         "tooltip": true,
+         "tooltip-format": "{essid} ({signalStrength}%)",
+         "tooltip-format-disconnected": "Disconnected"
     },
 
     "group/system-stats": {
         "orientation": "vertical",
         "modules": [
             "power-profiles-daemon",
-            "pulseaudio",
             "memory",
             "cpu",
-            "temperature",
-            "battery"
+            "temperature"
         ]
     },
 
@@ -120,11 +148,6 @@
             "", "", "", "", ""
         ],
         "tooltip": true
-    },
-
-    "tray": {
-        "icon-size": 20,
-        "spacing": 5
     },
 
     "custom/recorder_status": {

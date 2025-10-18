@@ -49,7 +49,7 @@
 }
 
 #waybar {
-  background-color: rgba(107, 114, 129, 0.3);
+  background-color: rgba(66, 66, 66, 0.8);
   color: white;
   font-family: Cantarell, Noto Sans, sans-serif;
   font-size: 13px;
@@ -63,6 +63,21 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
+  font-size: 16px;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+}
+
+#bluetooth {
+  font-size: 19px;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  padding-bottom: 5px;
+}
+
+#network {
+  font-size: 16px;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
   padding-bottom: 5px;
 }
 
@@ -110,9 +125,17 @@
   color: red;
 }
 #pulseaudio {
-   padding-bottom: 5px;
+  font-size: 16px;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
 }
+
 #pulseaudio.muted {
+  font-size: 16px;
+  font-family: "JetBrains Mono", "Fira Code", monospace;
+  margin-bottom: 10px;
+  padding-bottom: 5px;
   opacity: 0.5;
 }
 
@@ -207,4 +230,8 @@
   margin-right: 3px;
   margin-left: 3px;
   font-size: 14px;
+}
+
+#connection-programs {
+  margin-bottom: 10px;
 }
