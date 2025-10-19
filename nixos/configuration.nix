@@ -24,8 +24,7 @@
 
   # Kernel parameters for AMD Vega 8 stability
   boot.kernelParams = [
-    "amdgpu.abmlevel=0"       # Disable backlight flickering on Vega
-    "amdgpu.dcdebugmask=0x10" # Fix Wayland freezes on Vega
+    
   ];
 
   # ================================
@@ -38,7 +37,6 @@
       libvdpau-va-gl     # VA-API to VDPAU wrapper for video decode
       libva              # Video Acceleration API support
       libva-vdpau-driver # VDPAU backend for VA-API
-      rocmPackages.clr.icd # AMD HIP compute support
     ];
   };
 

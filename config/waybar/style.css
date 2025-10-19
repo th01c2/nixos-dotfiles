@@ -63,10 +63,12 @@
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   animation-direction: alternate;
-  font-size: 16px;
+  font-size: 15px;
+  color: #ddfcd1;
   font-family: "JetBrains Mono", monospace;
   margin-bottom: 5px;
   padding-bottom: 5px;
+  
 }
 
 #bluetooth {
@@ -77,6 +79,7 @@
 
 #network {
   font-size: 16px;
+  margin-right: 4px;
   font-family: "JetBrains Mono", "Fira Code", monospace;
   padding-bottom: 5px;
 }
@@ -84,13 +87,13 @@
 #battery.warning {
   font-size: 16px;
   font-family: "JetBrains Mono", monospace;
-  color: orange;
+  color: rgb(255, 220, 154);
 }
 
 #battery.critical {
   font-size: 16px;
   font-family: "JetBrains Mono", monospace;
-  color: red;
+  color: rgb(255, 128, 128);
 }
 
 #battery.warning.discharging {
@@ -104,44 +107,53 @@
 }
 #cpu {
     font-size: 14px;
+    margin-left: 4px;
     padding-bottom: 5px;
 }
 #cpu.warning {
     font-size: 14px;
+    margin-left: 4px;
     color: orange;
 }
 
 #cpu.critical {
     font-size: 14px;
+    margin-left: 4px;
     color: red;
 }
 #memory {
     font-size: 13px;
+    margin-left: 4px;
     padding-bottom: 5px;
 }
 #memory.warning {
   font-size: 13px;
+  margin-left: 4px;
   color: orange;
 }
 
 #memory.critical {
   font-size: 13px;
+  margin-left: 4px;
   color: red;
   animation-name: blink-critical;
   animation-duration: 2s;
 }
 #temperature {
   margin-bottom: 50px;
+  margin-left: 4px;
   font-size: 13px;
 }
 #temperature.critical {
   font-size: 13px;
+  margin-left: 4px;
   color: red;
 }
 #pulseaudio {
   font-size: 16px;
   font-family: "JetBrains Mono", "Fira Code", monospace;
   margin-bottom: 10px;
+  margin-right: 4px;
   padding-bottom: 5px;
 }
 
@@ -221,12 +233,12 @@
   border-radius: 8px;
   padding: 1px;
   margin-right: 3px;
-  margin-left: 3px;
+  margin-left: 4px;
   margin-top: 8px;
 }
 
 .modules-left label {
-  color: #fff;
+  color: #f0f0f0;
   font-family: "JetBrains Mono", "Fira Code", monospace;
   font-size: 1.2em;
   font-weight: bold;
@@ -239,9 +251,6 @@
 
 #connection-programs {
   margin-bottom: 10px;
-}
-#nixosicon {
-  font-size: 6em;
 }
 #system-stats {
   background-color: rgba(46, 52, 64, 0.4);

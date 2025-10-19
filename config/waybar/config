@@ -14,7 +14,9 @@
 
     "modules-right": [
         "custom/recorder_status",
-        "group/system-stats",
+        "memory",
+        "cpu",
+        "temperature",
         "pulseaudio",
         "group/connection-programs",
         "battery"
@@ -24,7 +26,8 @@
         "interval": 3,
         "states": {
             "warning": 30,
-            "critical": 15
+            "critical": 15,
+            "allign": 0
         },
         "format": " {icon}\n{capacity}%",
         "format-discharging": " {icon}\n{capacity}%",
@@ -42,15 +45,6 @@
         ]
     },
 
-    "group/system-stats": {
-        "orientation": "vertical",
-        "modules": [
-            "memory",
-            "cpu",
-            "temperature"
-        ]
-    },
-
 
      "bluetooth": {
          "interval": 5,
@@ -63,6 +57,7 @@
 
     "network": {
         "interval": 3,
+        "allign": 0,
         "format-wifi": "{icon}",
          "format-disconnected": "󰤭",
          "format-icons": ["󰤟", "󰤢", "󰤥", "󰤨"],
@@ -103,6 +98,7 @@
     "cpu": {
         "interval": 3,
         "format": "\n{usage}%",
+        "allign": 0,
         "states": {
             "warning": 70,
             "critical": 90
@@ -111,7 +107,8 @@
 
     "memory": {
         "interval": 3,
-        "format": " \n{}%",
+        "format": "\n{}%",
+        "allign": 0,
         "states": {
             "warning": 70,
             "critical": 90
@@ -131,6 +128,7 @@
 
     "pulseaudio": {
         "format": "{icon}",
+        "allign": 0,
         "format-bluetooth": "{icon}",
         "format-muted": "",
         "format-icons": {
@@ -142,7 +140,8 @@
             "car": "",
             "default": ["", ""]
         },
-        "on-click": "pavucontrol"
+        "on-click": "pavucontrol",
+        "tooltip-format": "{volume}%"
     },
 
     "temperature": {
