@@ -5,11 +5,11 @@
     "height": "100%",
 
     "modules-left": [
-        "hyprland/workspaces"
+        "group/clock-stack"
     ],
 
     "modules-center": [
-        "group/clock-stack"
+        "hyprland/workspaces"
     ],
 
     "modules-right": [
@@ -42,6 +42,16 @@
         ]
     },
 
+    "group/system-stats": {
+        "orientation": "vertical",
+        "modules": [
+            "memory",
+            "cpu",
+            "temperature"
+        ]
+    },
+
+
      "bluetooth": {
          "interval": 5,
          "format-on": "󰂯",
@@ -60,17 +70,6 @@
          "tooltip-format": "{essid} ({signalStrength}%)",
          "tooltip-format-disconnected": "Disconnected"
     },
-
-    "group/system-stats": {
-        "orientation": "vertical",
-        "modules": [
-            "power-profiles-daemon",
-            "memory",
-            "cpu",
-            "temperature"
-        ]
-    },
-
     "group/clock-stack": {
       "orientation": "vertical",
       "modules": [
@@ -103,7 +102,7 @@
 
     "cpu": {
         "interval": 3,
-        "format": "",
+        "format": "\n{usage}%",
         "states": {
             "warning": 70,
             "critical": 90
@@ -112,17 +111,23 @@
 
     "memory": {
         "interval": 3,
-        "format": " ",
+        "format": " \n{}%",
         "states": {
             "warning": 70,
             "critical": 90
         }
     },
-
     "hyprland/workspaces": {
-        "all-outputs": false,
-        "disable-scroll": true
-    },
+            "format": "{icon}",
+            "format-icons": {
+                "active": "",
+                "default": "",
+                "empty": ""
+            },
+            "persistent-workspaces": {
+                "*": [ 1,2,3,4,5 ]
+            }
+        },
 
     "pulseaudio": {
         "format": "{icon}",
@@ -143,7 +148,7 @@
     "temperature": {
         "critical-threshold": 80,
         "interval": 5,
-        "format": " {icon}",
+        "format": " {icon}\n{temperatureC}°C",
         "format-icons": [
             "", "", "", "", ""
         ],
@@ -157,22 +162,5 @@
         "exec": "if pgrep -x wl-screenrec > /dev/null; then echo '{\"text\": \"🔴\", \"class\": \"recording\"}'; else echo '{\"text\": \"\", \"class\": \"not-recording\"}'; fi",
         "on-click": "pkill wl-screenrec",
         "return-type": "json"
-    },
-
-    "power-profiles-daemon": {
-        "format": " {icon}",
-        "tooltip-format": "Power profile: {profile}\nDriver: {driver}",
-        "tooltip": true,
-        "format-icons": {
-            "default": "",
-            "performance": "",
-            "balanced": "",
-            "power-saver": ""
-        }
-    },
-    
-    "custom/nixosicon": {
-        "format": "",
-        "tooltip": false
     }
 }

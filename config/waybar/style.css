@@ -64,7 +64,7 @@
   animation-iteration-count: infinite;
   animation-direction: alternate;
   font-size: 16px;
-  font-family: "JetBrains Mono", "Fira Code", monospace;
+  font-family: "JetBrains Mono", monospace;
   margin-bottom: 5px;
   padding-bottom: 5px;
 }
@@ -82,10 +82,14 @@
 }
 
 #battery.warning {
+  font-size: 16px;
+  font-family: "JetBrains Mono", monospace;
   color: orange;
 }
 
 #battery.critical {
+  font-size: 16px;
+  font-family: "JetBrains Mono", monospace;
   color: red;
 }
 
@@ -99,29 +103,39 @@
   animation-duration: 2s;
 }
 #cpu {
+    font-size: 14px;
     padding-bottom: 5px;
 }
 #cpu.warning {
-  color: orange;
+    font-size: 14px;
+    color: orange;
 }
 
 #cpu.critical {
-  color: red;
+    font-size: 14px;
+    color: red;
 }
 #memory {
+    font-size: 13px;
     padding-bottom: 5px;
 }
 #memory.warning {
+  font-size: 13px;
   color: orange;
 }
 
 #memory.critical {
+  font-size: 13px;
   color: red;
   animation-name: blink-critical;
   animation-duration: 2s;
 }
-
+#temperature {
+  margin-bottom: 50px;
+  font-size: 13px;
+}
 #temperature.critical {
+  font-size: 13px;
   color: red;
 }
 #pulseaudio {
@@ -139,52 +153,51 @@
   opacity: 0.5;
 }
 
-#tray {
-  background-color: rgba(46, 52, 64, 0.5);
-  border-radius: 8px;
-  padding: 2px;
-  margin-bottom: 8px;
-}
-
-#tray > .needs-attention {
-  color: #ebcb8b;
-  background-color: rgba(46, 52, 64, 0.5);
-  border-radius: 8px;
-  padding: 2px;
-  margin-bottom: 8px;
-}
-
-#workspaces {
-  background-color: rgba(46, 52, 64, 0.4);
-  border-radius: 7px;
-  padding: 1px;
-  margin: 3px 3px;
-}
-
 #workspaces button {
-  background-color: transparent;
-  color: #fff;
-  font-family: "JetBrains Mono", "Fira Code", monospace;
-  font-size: 1.2em;
+  all: unset;
+  padding: 0px 5px;
+  color: rgb(124, 124, 124);
+  transition: all .2s ease;
+}
+
+#workspaces button:hover {
+  color: rgba(172, 204, 99, 0);
   border: none;
-  border-radius: 7px;
-  margin-top: 2px;
-  margin-bottom: 2px;
-  margin-left: 2px;
-  margin-right: 2px;
-  padding: 1px;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+  transition: all 1s ease;
 }
 
 #workspaces button.active {
-  background-color: #6a6a6a;
+  color: #ddfcd1;
+  border: none;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+#workspaces button.empty {
+  color: rgb(124, 124, 124);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
+}
+
+#workspaces button.empty:hover {
+  color: rgba(0, 0, 0, 0);
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .5);
+  transition: all 1s ease;
+}
+
+#workspaces button.empty.active {
+  color: #ddfcd1;
+  border: none;
+  text-shadow: 0px 0px 2px rgba(0, 0, 0, .5);
+}
+
+/* Workspaces with windows show as white (not empty, not active) */
+#workspaces button:not(.empty):not(.active) {
   color: #ffffff;
+  border: none;
+  text-shadow: 0px 0px 1.5px rgba(0, 0, 0, .2);
 }
-
-#workspaces button.urgent {
-  background-color: #bf616a;
-  color: #f8f8f2;
-}
-
 #recorder_status {
   font-size: 16px;
   padding: 0 2px;
@@ -203,16 +216,16 @@
   margin-bottom: 5px;
 }
 
-.modules-center {
+.modules-left {
   background-color: rgba(46, 52, 64, 0.3);
   border-radius: 8px;
   padding: 1px;
   margin-right: 3px;
   margin-left: 3px;
-  margin-bottom: 8px;
+  margin-top: 8px;
 }
 
-.modules-center label {
+.modules-left label {
   color: #fff;
   font-family: "JetBrains Mono", "Fira Code", monospace;
   font-size: 1.2em;
@@ -223,15 +236,16 @@
   margin: 0;
 }
 
-#system-stats {
-  background-color: rgba(46, 52, 64, 0.5);
-  border-radius: 8px;
-  margin-bottom: 7px;
-  margin-right: 3px;
-  margin-left: 3px;
-  font-size: 14px;
-}
 
 #connection-programs {
   margin-bottom: 10px;
+}
+#nixosicon {
+  font-size: 6em;
+}
+#system-stats {
+  background-color: rgba(46, 52, 64, 0.4);
+  border-radius: 7px;
+  padding: 1px;
+  margin: 3px 3px;
 }
