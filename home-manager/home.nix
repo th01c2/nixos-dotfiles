@@ -59,6 +59,9 @@
     ".config/fuzzel/fuzzel.ini".source = ../config/fuzzel/fuzzel.ini;  
 
     ".config/fastfetch/config.jsonc".source = ../config/fastfetch/config.jsonc;  
+
+    # MPV Config
+    ".config/mpv/mpv.conf".source = ../config/mpv/mpv.conf;
   };
   
   # ============================
