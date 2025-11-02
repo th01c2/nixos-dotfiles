@@ -24,11 +24,11 @@
       options = [ "fmask=0077" "dmask=0077" ];
     };
 
-#   fileSystems."/media/sebastian/ExternalSSD" =
-#    { device = "UUID=98CC-20A6";
-#      fsType = "vfat";
-#      options = [ "uid=1000" "gid=100" "umask=0022" "nofail"];
-#    };
+  /* fileSystems."/media/sebastian/Backup" =
+    { device = "UUID=90473e05-d0a1-4486-a1f8-04c5379d2cf8";
+      fsType = "ext4";
+      options = ["nofail"];
+    };          */
 
   swapDevices = [ ];
 

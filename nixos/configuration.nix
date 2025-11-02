@@ -23,9 +23,7 @@
   boot.kernelModules = [ "v4l2loopback" ];
 
   # Kernel parameters for AMD Vega 8 stability
-  boot.kernelParams = [
-    
-  ];
+  boot.kernelParams = [  ];
 
   # ================================
   # Graphics Settings (AMD)
@@ -80,7 +78,10 @@
   # Networking
   # ================================
   networking.networkmanager.enable = true;
-  networking.nameservers = [ "1.1.1.1" "1.0.0.1"];
+  networking.firewall.allowedTCPPorts = [ 57307 ];
+  networking.firewall.allowedUDPPorts = [ 57307 ];
+
+  #  networking.nameservers = [ "1.1.1.1" "1.0.0.1"];
 
   # ================================
   # Bluetooth
@@ -100,17 +101,12 @@
   };
 
   # ================================
-  # Printing
-  # ================================
-  services.printing.enable = true;
-
-  # ================================
   # Users
   # ================================
   users.users.sebastian = {
     isNormalUser = true;
     description = "Sebastian";
-    extraGroups = [ "networkmanager" "wheel" "git" "android-tools" "storage" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "git" "android-tools" "storage" "input" "libvirtd"];
     packages = with pkgs; [
       telegram-desktop
       vscodium
@@ -171,6 +167,7 @@
   environment.systemPackages = with pkgs; [
     file-roller  	    # GUI archive manager for extracting/creating archives
     file                    # Identify file types and MIME types
+    vim
     fastfetch		    # Displays system info (CPU, GPU, OS, RAM, etc)
     p7zip		    # 7z compression format support
     unrar		    # Extract RAR archives
@@ -207,6 +204,9 @@
     simg2img                # Convert Android sparse images to regular images
     python3                 # Python 3 programming language runtime
     python313Packages.tkinter # Python GUI toolkit for creating GUIs
+    virt-viewer
+    i2c-tools 
+    python3Packages.evdev
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
@@ -242,6 +242,42 @@
     dockerCompat = true;
   };
 
+   virtualisation.libvirtd = {
+    enable = true;
+    qemu = {
+      package = pkgs.qemu_kvm;
+      runAsRoot = true;
+      swtpm.enable = true;
+    };
+  };
+
+  # ================================
+  # SSH config
+  # ================================
+
+  services.openssh = {
+  enable = true;
+  settings = {
+    PermitRootLogin = "no";
+    PasswordAuthentication = false;
+    PubkeyAuthentication = true;
+    PermitEmptyPasswords = false;
+    X11Forwarding = false;
+    HostbasedAuthentication = false;
+    ChallengeResponseAuthentication = false;
+    KbdInteractiveAuthentication = false;
+    LogLevel = "VERBOSE";
+    MaxAuthTries = 3;
+    MaxSessions = 10;
+    ClientAliveInterval = 300;
+    ClientAliveCountMax = 2;
+    AllowTcpForwarding = true;
+    HostKeyAlgorithms = "ssh-ed25519";
+    AllowUsers = [ "sebastian" ];
+  };
+};
+
+  
   # ================================
   # State Version
   # ================================
