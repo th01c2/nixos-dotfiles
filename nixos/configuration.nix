@@ -23,14 +23,20 @@
   boot.kernelModules = [ "v4l2loopback" ];
 
   # Kernel parameters for AMD Vega 8 stability
-  boot.kernelParams = [  ];
+  boot.kernelParams = [
+    "amd_pstate=active"  # Enables modern AMD CPU scaling for better performance & efficiency
+    "nvme.noacpi=1"      # Prevents NVMe controller hangs caused by buggy ACPI tables
+    "amdgpu.dc=1"        # Enables AMD Display Core (Wayland, VRR, HDR, multi-display support)
+    "i8042.nomux"        # Fixes laggy or unresponsive touchpad/keyboard issues
+  ];
 
+  
   # ================================
   # Graphics Settings (AMD)
   # ================================
   hardware.graphics = {
     enable = true;
-    enable32Bit = true;
+    enable32Bit = false;
     extraPackages = with pkgs; [
       libvdpau-va-gl     # VA-API to VDPAU wrapper for video decode
       libva              # Video Acceleration API support
@@ -205,8 +211,7 @@
     python3                 # Python 3 programming language runtime
     python313Packages.tkinter # Python GUI toolkit for creating GUIs
     virt-viewer
-    i2c-tools 
-    python3Packages.evdev
+    usbutils
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
@@ -281,5 +286,5 @@
   # ================================
   # State Version
   # ================================
-  system.stateVersion = "24.11"; # Adjusted to match your current version
+  system.stateVersion = "24.11"; # Never change THIS property
 }
