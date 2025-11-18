@@ -7,10 +7,12 @@
     "hyprland/workspaces",
 	"hyprland/window"
     ],
+
     "modules-center": [
 	"clock#date",
 	"clock#time"
     ],
+    
     "modules-right": [
 	"power-profiles-daemon",
 	"pulseaudio",
@@ -46,6 +48,7 @@
          "interval": 3,
          "format-on": "󰂯",
          "format-off": "󰂲",
+	 "format-disabled": "󰂲",
          "exec": "blueman-manager",
          "tooltip": true,
          "on-click": "blueman-manager"

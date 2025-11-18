@@ -1,3 +1,4 @@
+
 { config, pkgs, inputs, ... }:
 
 {
@@ -20,7 +21,9 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-  boot.kernelModules = [ "v4l2loopback" ];
+  boot.kernelModules = [ 
+    "v4l2loopback"
+ ];
 
   # Kernel parameters for AMD Vega 8 stability
   boot.kernelParams = [
@@ -209,9 +212,10 @@
     qemu-utils              # QEMU disk image utilities and converters
     simg2img                # Convert Android sparse images to regular images
     python3                 # Python 3 programming language runtime
-    python313Packages.tkinter # Python GUI toolkit for creating GUIs
     virt-viewer
     usbutils
+    acpica-tools
+    chromium
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
@@ -260,7 +264,7 @@
   # SSH config
   # ================================
 
-  services.openssh = {
+ /* services.openssh = {
   enable = true;
   settings = {
     PermitRootLogin = "no";
@@ -281,8 +285,8 @@
     AllowUsers = [ "sebastian" ];
   };
 };
+*/
 
-  
   # ================================
   # State Version
   # ================================

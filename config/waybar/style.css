@@ -5,9 +5,11 @@
 }
 
 @keyframes blink-critical {
-    70% { color: white; }
-    to { color: red; }
+    0% { color: rgb(240, 120, 120); }
+    50% { color: white; }
+    100% { color: rgb(255, 88, 88); }
 }
+
 
 @keyframes blink {
     0% { opacity: 1; }
@@ -88,8 +90,6 @@
 }
 #network.disconnected {
     color: orange;
-    background-color: rgba(46, 52, 64, 0.5);
-    border-radius: 8px;
     padding: 4px;
     margin-right: 3px;
 }
@@ -185,13 +185,15 @@
     min-height: 0px;
 }
 #workspaces button.active {
-    background-color: #6a6a6a;
     color: #fff;
 }
 #workspaces button.urgent {
-    background-color: #bf616a;
-    color: #f8f8f2;
+    animation: blink-critical 2s infinite;
 }
+#workspaces button:not(.empty):not(.active) {
+    color: #ddfcd1; /* green for occupied */
+}
+
 
 /* Recorder status */
 #recorder_status {
