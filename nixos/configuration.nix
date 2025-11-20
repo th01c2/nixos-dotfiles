@@ -161,6 +161,7 @@
   # ================================
   programs.firefox.enable = true;
   programs.thunar.enable = true;
+  programs.fish.enable = true;
   services.flatpak.enable = true;
 
   # ================================
