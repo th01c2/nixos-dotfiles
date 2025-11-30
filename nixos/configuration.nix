@@ -186,6 +186,7 @@
     foot                    # GPU-accelerated terminal emulator
     ffmpeg                  # Media encoding, decoding, and conversion tool
     git                     # Version control system
+    git-repo
     curl		    # Download files from URLs via CLI
     wget		    # Alternative CLI file downloader
     tuigreet     	    # Text-based login manager
@@ -206,7 +207,6 @@
     blender		    # 3D modeling, animation, and rendering software
     wireshark               # Network packet analyzer and sniffer
     distrobox               # Run other Linux distros in containers
-    zulu24                  # OpenJDK 24 Java runtime environment
     woeusb-ng               # Create Windows bootable USB drives
     ntfs3g                  # Read/write NTFS filesystem support
     apksigner               # Sign and verify Android APK files
@@ -215,8 +215,10 @@
     python3                 # Python 3 programming language runtime
     virt-viewer
     usbutils
-    acpica-tools
     chromium
+    frida-tools
+    mission-center
+    bottles
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
