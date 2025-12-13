@@ -10,6 +10,19 @@
       url = "github:danth/stylix/";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    dgop = {
+      url = "github:AvengeMedia/dgop";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    dankMaterialShell = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.dgop.follows = "dgop";
+    };
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -18,7 +31,7 @@
     cachix.url = "github:cachix/cachix";
 };
 
-  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, stylix, dgop, dankMaterialShell, noctalia, ... }@inputs: {
     # Replace 'nixos' with your actual hostname if different
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux"; # Change to "aarch64-linux" if you're on ARM
@@ -27,6 +40,7 @@
         # Import your NixOS configuration
         ./nixos/configuration.nix
 	inputs.stylix.nixosModules.stylix
+	inputs.dankMaterialShell.nixosModules.dankMaterialShell
         
         # Set up Home Manager as a NixOS module
         home-manager.nixosModules.home-manager

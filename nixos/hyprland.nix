@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   # Enable the Hyprland window manager
   programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
+    inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default
     waybar           # Status bar
     wlsunset	     # Blue Light Filter
     grim             # Screenshot tool

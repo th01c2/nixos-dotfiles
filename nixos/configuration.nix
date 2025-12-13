@@ -162,6 +162,7 @@
   programs.firefox.enable = true;
   programs.thunar.enable = true;
   programs.fish.enable = true;
+  programs.dankMaterialShell.enable = true;
   services.flatpak.enable = true;
 
   # ================================
@@ -219,6 +220,7 @@
     frida-tools
     mission-center
     bottles
+    tor-browser
   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
