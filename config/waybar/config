@@ -49,6 +49,7 @@
          "format-on": "󰂯",
          "format-off": "󰂲",
 	 "format-disabled": "󰂲",
+	 "format-connected": "󰂯",
          "exec": "blueman-manager",
          "tooltip": true,
          "on-click": "blueman-manager"
