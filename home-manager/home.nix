@@ -62,9 +62,6 @@
 
     # MPV Config
     ".config/mpv/mpv.conf".source = ../config/mpv/mpv.conf;
-
-    # Fish Shell Config
-    ".config/fish/config.fish".source = ../config/fish/config.fish;
   };
   
   # ============================
