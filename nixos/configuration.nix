@@ -88,7 +88,7 @@
   # ================================
   networking.networkmanager.enable = true;
   networking.firewall.allowedTCPPorts = [ 57307 ];
-  networking.firewall.allowedUDPPorts = [ 57307 ];
+  networking.firewall.allowedUDPPorts = [ 19132  2222 ];
 
   #  networking.nameservers = [ "1.1.1.1" "1.0.0.1"];
 
@@ -115,7 +115,7 @@
   users.users.sebastian = {
     isNormalUser = true;
     description = "Sebastian";
-    extraGroups = [ "networkmanager" "wheel" "git" "android-tools" "storage" "input" "libvirtd"];
+    extraGroups = [ "networkmanager" "wheel" "git" "android-tools" "storage" "input" "libvirtd" "docker"];
     packages = with pkgs; [
       telegram-desktop
       vscodium
@@ -249,18 +249,49 @@
   # ===============================
   # Distrobox
   # ===============================
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-  };
+  # Disable Podman and Enable Docker
+  virtualisation.podman.enable = false; 
+  virtualisation.docker.enable = true;
 
-   virtualisation.libvirtd = {
+  # Force the OCI module to use the docker daemon
+  virtualisation.oci-containers.backend = "docker";
+
+  virtualisation.libvirtd = {
     enable = true;
     qemu = {
       package = pkgs.qemu_kvm;
       runAsRoot = true;
       swtpm.enable = true;
     };
+  };
+
+  virtualisation.oci-containers.containers."mc-bedrock" = {
+    image = "itzg/minecraft-bedrock-server";
+    autoStart = true;
+     ports = [
+    "19132:19132/udp" # Default Bedrock port
+    "2222:2222"       # <--- ADD THIS LINE (TCP for SSH)
+  ];
+     environment = {
+      EULA = "TRUE";                    # Required to accept Minecraft EULA
+      VERSION = "1.20.80.05";           # Exact version you want
+      SERVER_NAME = "My 1.20.80 Bedrock Server";
+      GAMEMODE = "survival";
+      DIFFICULTY = "normal";
+      VIEW_DISTANCE = "8";
+      TICK_DISTANCE = "4";
+      ALLOW_CHEATS = "false";
+      MAX_PLAYERS = "2";
+      SERVER_PORT = "19132";
+      SERVER_PORTV6 = "19133";          # IPv6 port (optional)
+      LEVEL_TYPE = "DEFAULT";
+      MAX_THREADS="8";
+      ONLINE_MODE = "false";             # Set to false for offline/cracked if needed
+      ENABLE_SSH = "true";
+    };
+    volumes = [
+      "/var/lib/minecraft-bedrock:/data" # Persistent data path
+    ];
   };
 
   # ================================
