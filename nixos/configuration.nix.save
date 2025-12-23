@@ -267,7 +267,7 @@
 
   virtualisation.oci-containers.containers."mc-bedrock" = {
     image = "itzg/minecraft-bedrock-server";
-    autoStart = false;
+    autoStart = true;
      ports = [
     "19132:19132/udp" # Default Bedrock port
     "2222:2222"       # <--- ADD THIS LINE (TCP for SSH)
@@ -288,6 +288,7 @@
       MAX_THREADS="8";
       ONLINE_MODE = "false";             # Set to false for offline/cracked if needed
       ENABLE_SSH = "true";
+      
     };
     volumes = [
       "/var/lib/minecraft-bedrock:/data" # Persistent data path

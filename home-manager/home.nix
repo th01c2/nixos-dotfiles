@@ -81,7 +81,23 @@
     '';
 
   };
+  # Firefox config UI
+  programs.firefox = {
+    enable = true;
 
+    profiles = {
+      yourprofilename = {  # Replace with your profile name
+        id = 0;
+
+        settings = {
+          "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
+          # Other settings...
+        };
+
+        userChrome = builtins.readFile ./config/firefox/userChrome.css;
+      };
+    };
+  };
   programs.home-manager.enable = true;
 
 }
