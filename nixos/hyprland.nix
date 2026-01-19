@@ -7,7 +7,8 @@
   environment.systemPackages = with pkgs; [
     waybar           # Status bar
     wlsunset	     # Blue Light Filter
-    grim             # Screenshot tool
+    hyprshot
+    grimblast
     slurp            # Select region for screenshots
     wl-screenrec     # Screen Recorder Utility
     wl-clipboard     # Clipboard utilities for Wayland
@@ -25,6 +26,7 @@
     nwg-bar          # Poweroff/Reboot/Suspend button menu
     mako	     # Notification daemon for Wayland
     fuzzel	     # ROFI/WOFI Alternative
+    hyprpicker
   ];
 
   # If using a display manager like greetd or SDDM, configure it here

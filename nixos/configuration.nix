@@ -11,6 +11,7 @@
     ./build-tools.nix		      # Build Tools for Compiling
     ./hyprland.nix                    # Hyprland-specific config
     ../config/themes/stylix.nix
+    ./proxy-server.nix
   ];
 
   # ================================
@@ -21,10 +22,14 @@
   boot.kernelPackages = pkgs.linuxPackages_latest;
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
-  boot.kernelModules = [ 
+  boot.kernelModules = [
     "v4l2loopback"
- ];
+  ];
 
+  # Ensure boot is marked successful
+  boot.initrd.systemd.enable = true;
+  boot.bootspec.enable = true;
+ 
   # Kernel parameters for AMD Vega 8 stability
   boot.kernelParams = [
     "amd_pstate=active"  # Enables modern AMD CPU scaling for better performance & efficiency
@@ -140,7 +145,7 @@
   services.greetd.enable = true;
   services.greetd.settings = {
     default_session = {
-      command = "tuigreet --time --remember --cmd hyprland";
+      command = "tuigreet --time --remember --cmd start-hyprland";
       user = "sebastian";
     };
   };
@@ -205,7 +210,6 @@
     wasistlos		    # WhatsApp messaging client
     apktool		    # Decompile and repackage Android APK files
     blender		    # 3D modeling, animation, and rendering software
-    wireshark               # Network packet analyzer and sniffer
     distrobox               # Run other Linux distros in containers
     woeusb-ng               # Create Windows bootable USB drives
     ntfs3g                  # Read/write NTFS filesystem support
@@ -219,7 +223,11 @@
     frida-tools
     mission-center
     bottles
-  ];
+    unityhub
+    kdePackages.kdenlive
+    audacity
+    remmina
+   ];
 
   programs.thunar.plugins = with pkgs.xfce; [
 	thunar-archive-plugin   # Archive integration for Thunar
