@@ -1,5 +1,5 @@
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, lib, ... }:
 
 {
   # ================================
@@ -11,7 +11,6 @@
     ./build-tools.nix		      # Build Tools for Compiling
     ./hyprland.nix                    # Hyprland-specific config
     ../config/themes/stylix.nix
-    ./proxy-server.nix
   ];
 
   # ================================
@@ -94,7 +93,7 @@
   networking.networkmanager.enable = true;
   networking.firewall.allowedTCPPorts = [ 57307 ];
   networking.firewall.allowedUDPPorts = [ 19132  2222 ];
-
+  
   #  networking.nameservers = [ "1.1.1.1" "1.0.0.1"];
 
   # ================================
@@ -168,6 +167,7 @@
   programs.thunar.enable = true;
   programs.fish.enable = true;
   services.flatpak.enable = true;
+  services.tailscale.enable = true;
 
   # ================================
   # System Services
@@ -227,6 +227,7 @@
     kdePackages.kdenlive
     audacity
     remmina
+    freerdp
    ];
 
   programs.thunar.plugins = with pkgs.xfce; [
