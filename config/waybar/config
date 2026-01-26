@@ -18,7 +18,7 @@
 	"pulseaudio",
     "memory",
     "cpu",
-    "temperature",
+    "custom/multi_temp",
     "battery",
     "network",
     "bluetooth",
@@ -130,16 +130,13 @@
         "on-click": "pavucontrol"
     },
 
-    "temperature": {
-        "critical-threshold": 80,
-        "interval": 5,
-        "format": "{icon}{temperatureC}°C",
-        "format-icons": [
-            "", "", "", "", ""
-        ],
-        "tooltip": true
-    },
-
+	"custom/multi_temp": {
+    	   "format": "{}",
+    	   "interval": 5,
+    	   "return-type": "json",
+    	   "exec": "CPU=$(cat /sys/class/hwmon/hwmon2/temp1_input | cut -c1-2); GPU=$(cat /sys/class/hwmon/hwmon4/temp1_input | cut -c1-2); WIFI=$(cat /sys/class/hwmon/hwmon1/temp1_input | cut -c1-2); echo \"{\\\"text\\\": \\\"$CPU°C\\\", \\\"tooltip\\\": \\\"CPU: $CPU°C\\nGPU: $GPU°C\\nWiFi: $WIFI°C\\\", \\\"class\\\": \\\"temp-$CPU\\\"}\"",
+    	   "tooltip": true
+   },
     "custom/recorder_status": {
       "format": "{}",
       "tooltip": false,

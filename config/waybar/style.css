@@ -38,7 +38,7 @@
 #memory,
 #cpu,
 #battery,
-#temperature,
+#custom-multi_temp,
 #bluetooth,
 #network,
 #power-profiles-daemon {
@@ -137,11 +137,11 @@
 }
 
 /* Temperature */
-#temperature {
+#custom-multi_temp {
     font-size: 13px;
     margin-left: 5px;
 }
-#temperature.critical {
+#custom-multi_temp.critical {
     font-size: 13px;
     color: red;
 }
