@@ -98,14 +98,13 @@
   # ================================
   # AUDIO
   # ================================
-  services.pulseaudio.enable = false;
   services.pipewire = {
     enable = true;
-    alsa = {
-      enable = true;
-      support32Bit = true;
-    };
+    alsa.enable = true;
+    alsa.support32Bit = true;
     pulse.enable = true;
+    # Add this line - it handles the "default device" logic
+    wireplumber.enable = true;
   };
 
   # ================================
