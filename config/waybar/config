@@ -129,14 +129,14 @@
         },
         "on-click": "pavucontrol"
     },
-
 	"custom/multi_temp": {
-    	   "format": "{}",
+    	   "format": " {}",
     	   "interval": 5,
-    	   "return-type": "json",
-    	   "exec": "CPU=$(cat /sys/class/hwmon/hwmon2/temp1_input | cut -c1-2); GPU=$(cat /sys/class/hwmon/hwmon4/temp1_input | cut -c1-2); WIFI=$(cat /sys/class/hwmon/hwmon1/temp1_input | cut -c1-2); echo \"{\\\"text\\\": \\\"$CPU°C\\\", \\\"tooltip\\\": \\\"CPU: $CPU°C\\nGPU: $GPU°C\\nWiFi: $WIFI°C\\\", \\\"class\\\": \\\"temp-$CPU\\\"}\"",
-    	   "tooltip": true
+   	    "return-type": "json",
+   	    "exec": "CPU_PATH=$(grep -l 'k10temp' /sys/class/hwmon/hwmon*/name | sed 's/name/temp1_input/'); GPU_PATH=$(grep -l 'amdgpu' /sys/class/hwmon/hwmon*/name | sed 's/name/temp1_input/'); CPU_TEMP=$(($(cat $CPU_PATH) / 1000)); GPU_TEMP=$(($(cat $GPU_PATH) / 1000)); echo \"{\\\"text\\\": \\\"$CPU_TEMP°C | $GPU_TEMP°C\\\", \\\"tooltip\\\": \\\"CPU: $CPU_TEMP°C\\\\nGPU: $GPU_TEMP°C\\\"}\"",
+   	    "tooltip": true
    },
+
     "custom/recorder_status": {
       "format": "{}",
       "tooltip": false,
