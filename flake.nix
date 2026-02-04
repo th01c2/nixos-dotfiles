@@ -15,33 +15,31 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    cachix.url = "github:cachix/cachix";
-};
 
-  outputs = { self, nixpkgs, home-manager, stylix, ... }@inputs: {
-    # Replace 'nixos' with your actual hostname if different
+    # PrismLauncher Cracked input
+    prismlauncher-cracked.url = "github:Diegiwg/PrismLauncher-Cracked"; # Added this line
+
+    cachix.url = "github:cachix/cachix";
+  };
+
+  outputs = { self, nixpkgs, home-manager, stylix, prismlauncher-cracked, ... }@inputs: {
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux"; # Change to "aarch64-linux" if you're on ARM
+      system = "x86_64-linux";
       
       modules = [
-        # Import your NixOS configuration
         ./nixos/configuration.nix
-	inputs.stylix.nixosModules.stylix
+        inputs.stylix.nixosModules.stylix
         
-        # Set up Home Manager as a NixOS module
         home-manager.nixosModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          # Replace 'sebastian' with your actual username
           home-manager.users.sebastian = import ./home-manager/home.nix;
-          
-          # Optionally, use the same nixpkgs as the system
           home-manager.extraSpecialArgs = { inherit inputs; };
         }
       ];
       
-      specialArgs = { inherit inputs; };
+      specialArgs = { inherit inputs; }; # Passes inputs to configuration.nix
     };
 
     homeConfigurations.sebastian = home-manager.lib.homeManagerConfiguration {
