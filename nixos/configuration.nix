@@ -237,6 +237,7 @@
     mission-center
     vesktop
     tailscale
+    gimp
   ];
 
   # ================================

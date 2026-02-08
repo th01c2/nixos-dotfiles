@@ -66,7 +66,7 @@ let
       iconv
       iconv.dev # sys/types.h
     ];
-    runScript = "zsh";
+    runScript = "bash";
     profile = ''
       export ALLOW_NINJA_ENV=true
       export USE_CCACHE=1
