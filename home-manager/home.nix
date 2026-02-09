@@ -65,6 +65,10 @@
 
     # Fish Shell Config
     ".config/fish/config.fish".source = ../config/fish/config.fish;
+
+    # Swaync Config
+    ".config/swaync/config.json".source = ../config/swaync/config.json;
+    ".config/swaync/style.css".source = ../config/swaync/style.css;
   };
   
   # ============================

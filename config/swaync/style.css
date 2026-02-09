@@ -1,0 +1,47 @@
+/* Use your system font */
+* {
+    font-family: "Cozette", monospace;
+    font-size: 11pt;
+}
+
+.notification-row {
+    outline: none;
+    margin: 5px; /* Matches your 'margin=5' */
+}
+
+.notification {
+    background: #282828;
+    border: 2px solid #d5c4a1; /* Matches border-size and border-color */
+    border-radius: 15px;      /* Matches border-radius */
+    padding: 0px 5px 10px 5px; /* Matches padding=0,5,10 */
+    color: #ebdbb2;           /* Gruvbox foreground */
+}
+
+/* Matching the "High" urgency border-color */
+.notification.critical {
+    border-color: #bf616a;
+}
+
+/* Styling the Summary (Subject) */
+.summary {
+    color: #ebdbb2;
+    font-weight: bold;
+}
+
+/* Styling the Body */
+.body {
+    color: #ebdbb2;
+}
+
+/* Styling the Action Buttons (What Mako was missing!) */
+.notification-action {
+    background: #3c3836;
+    border: 1px solid #d5c4a1;
+    border-radius: 8px;
+    color: #ebdbb2;
+    margin: 4px;
+}
+
+.notification-action:hover {
+    background: #504945;
+}
