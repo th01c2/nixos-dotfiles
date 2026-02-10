@@ -1,47 +1,119 @@
-/* Use your system font */
+/* --- Global Styles --- */
 * {
-    font-family: "Cozette", monospace;
+    font-family: "Cozette", "JetBrains Mono", monospace;
     font-size: 11pt;
+    color: #ebdbb2; /* Gruvbox Light Foreground */
 }
 
-.notification-row {
-    outline: none;
-    margin: 5px; /* Matches your 'margin=5' */
+/* --- Control Center (The Side Panel) --- */
+.control-center {
+    background: #1d2021; /* Darker Gruvbox Background */
+    border-radius: 15px;
+    border: 2px solid #3c3836;
+    margin: 10px;
+    padding: 12px;
 }
 
+/* --- Notification Cards --- */
 .notification {
     background: #282828;
-    border: 2px solid #d5c4a1; /* Matches border-size and border-color */
-    border-radius: 15px;      /* Matches border-radius */
-    padding: 0px 5px 10px 5px; /* Matches padding=0,5,10 */
-    color: #ebdbb2;           /* Gruvbox foreground */
+    border-radius: 12px;
+    margin: 4px 0px;        /* Changed from 8px 0px */
+    padding: 4px 12px;      /* Changed from 12px to 4px vertical padding */
+    border: 1px solid #3c3836;
+    box-shadow: inset 8px 0 0 -2px #d5c4a1; 
 }
-
-/* Matching the "High" urgency border-color */
 .notification.critical {
-    border-color: #bf616a;
+    box-shadow: inset 8px 0 0 -2px #fb4934; /* Red bar for critical */
+    border: 1px solid #fb4934;
 }
-
-/* Styling the Summary (Subject) */
+/* Titles and Text */
 .summary {
-    color: #ebdbb2;
     font-weight: bold;
+    font-size: 12pt;
+    margin-bottom: 4px;
 }
 
-/* Styling the Body */
 .body {
-    color: #ebdbb2;
+    color: #bdae93; /* Muted Gruvbox text */
 }
 
-/* Styling the Action Buttons (What Mako was missing!) */
+/* --- Progress Bar (The "Beautiful" Version) --- */
+progressbar {
+    margin-top: 10px;
+}
+
+progressbar trough {
+    background-color: #3c3836;
+    border-radius: 10px; /* Rounded background */
+    min-height: 8px;
+    border: none;
+}
+
+progressbar progress {
+    background-color: #b8bb26; /* Green progress */
+    border-radius: 10px; /* Rounded bar */
+    min-height: 8px;
+    /* Subtle glow */
+    box-shadow: 0 0 5px rgba(184, 187, 38, 0.3);
+}
+
+/* --- Action Buttons (Pill shaped) --- */
 .notification-action {
     background: #3c3836;
-    border: 1px solid #d5c4a1;
-    border-radius: 8px;
-    color: #ebdbb2;
-    margin: 4px;
+    border-radius: 20px;
+    border: 1px solid #504945;
+    margin: 8px 4px 0px 4px;
+    padding: 4px;
 }
 
 .notification-action:hover {
     background: #504945;
+    border-color: #d5c4a1;
+}
+
+/* --- Widgets (Top Bar) --- */
+.widget-title {
+    margin: 8px;
+    font-weight: bold;
+}
+
+.widget-title > button {
+    background: #3c3836;
+    border: 1px solid #504945;
+    border-radius: 10px;
+    padding: 4px 12px;
+}
+
+.widget-title > button:hover {
+    background: #fb4934;
+    color: #1d2021;
+}
+
+.widget-dnd {
+    margin: 8px;
+}
+
+.widget-dnd > switch {
+    background: #3c3836;
+    border-radius: 15px;
+    border: 1px solid #504945;
+}
+
+.widget-dnd > switch:checked {
+    background: #b8bb26;
+}
+
+.widget-dnd > switch slider {
+    background: #ebdbb2;
+    border-radius: 15px;
+}
+
+/* --- Close Button --- */
+.close-button {
+    background: #fb4934;
+    color: #1d2021;
+    border-radius: 100%;
+    margin: 4px;
+    padding: 2px;
 }

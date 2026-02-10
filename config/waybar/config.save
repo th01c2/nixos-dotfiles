@@ -149,7 +149,7 @@
 
     "custom/notification": {
     "tooltip": true,
-    "format": "<span size='13pt'>{icon} </span>",
+    "format": "<span size='13pt'>{icon} W</span>",
     "format-icons": {
       "notification": "󱅫",
       "none": "󰂜",
