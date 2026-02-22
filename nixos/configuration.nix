@@ -7,7 +7,6 @@
   imports = [
     ./hardware-configuration.nix
     ./bash_configuration.nix
-    ./build-tools.nix
     ./android-env.nix
     ./hyprland.nix
     ../config/themes/stylix.nix
