@@ -175,7 +175,6 @@
   programs = {
     hyprland.enable = true;
     hyprlock.enable = true;
-    firefox.enable = true;
     thunar = {
       enable = true;
       plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
@@ -188,6 +187,7 @@
   # ================================
   environment.systemPackages = with pkgs; [
     inputs.prismlauncher-cracked.packages.${pkgs.system}.prismlauncher
+    librewolf
     file-roller
     file
     p7zip
@@ -237,7 +237,7 @@
     mission-center
     vesktop
     tailscale
-    gimp
+    mcpelauncher-ui-qt
   ];
 
   # ================================
