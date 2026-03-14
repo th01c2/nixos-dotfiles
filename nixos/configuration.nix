@@ -92,12 +92,6 @@
       checkReversePath = "loose";                            # Allow non-standard routing
     };
   };
-  security.wrappers.FlClash = {
-  owner = "root";
-  group = "root";
-  capabilities = "cap_net_admin,cap_net_raw+ep";
-  source = "${pkgs.flclash}/bin/FlClash";
-};
 
   # ================================
   # SERVICES
@@ -246,7 +240,7 @@
     nodejs_24
     scrcpy
     ghidra
-    flclash
+    nmap
   ];
 
   # ================================
