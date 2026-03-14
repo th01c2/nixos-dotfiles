@@ -88,10 +88,16 @@
       allowedUDPPorts = [ 19132 8388 41641 ];                # Port 41641 for Tailscale direct
 
       # THE FIX: Allow Tailscale to work properly on NixOS
-      trustedInterfaces = [ "tailscale0" ];                  # Trust virtual tunnel traffic
+      trustedInterfaces = [ "tun0" "tailscale0" ];                  # Trust virtual tunnel traffic
       checkReversePath = "loose";                            # Allow non-standard routing
     };
   };
+  security.wrappers.FlClash = {
+  owner = "root";
+  group = "root";
+  capabilities = "cap_net_admin,cap_net_raw+ep";
+  source = "${pkgs.flclash}/bin/FlClash";
+};
 
   # ================================
   # SERVICES
@@ -237,6 +243,10 @@
     vesktop
     tailscale
     mcpelauncher-ui-qt
+    nodejs_24
+    scrcpy
+    ghidra
+    flclash
   ];
 
   # ================================
