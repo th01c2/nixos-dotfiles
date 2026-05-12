@@ -7,7 +7,6 @@
   imports = [
     ./hardware-configuration.nix
     ./bash_configuration.nix
-    ./android-env.nix
     ./hyprland.nix
     ../config/themes/stylix.nix
   ];
@@ -26,6 +25,16 @@
     extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
     bootspec.enable = true;
     binfmt.emulatedSystems = [ "aarch64-linux" ];
+    kernelParams = [
+      "quiet"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+      "udev.log_priority=3"
+      "boot.shell_on_fail"
+    ];
+
+    consoleLogLevel = 0; 
+    initrd.verbose = false;
   };
 
   # ================================
@@ -59,7 +68,7 @@
   # ================================
   # SYSTEM IDENTITY & LOCALIZATION
   # ================================
-  networking.hostName = "nixos-sebastian";                   # Set your hostname
+  networking.hostName = "nixos-sebastian";
   time.timeZone = "Europe/Bucharest";
   
   i18n = {
@@ -84,14 +93,13 @@
     networkmanager.enable = true;
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 57307 8388 ];                   # Port 22 for SSH
-      allowedUDPPorts = [ 19132 8388 41641 ];                # Port 41641 for Tailscale direct
-
-      # THE FIX: Allow Tailscale to work properly on NixOS
-      trustedInterfaces = [ "tun0" "tailscale0" ];                  # Trust virtual tunnel traffic
-      checkReversePath = "loose";                            # Allow non-standard routing
+      allowedTCPPorts = [ 22 57307 8388 ];
+      allowedUDPPorts = [19132 8388 41641 ];
+      trustedInterfaces = [ "tun0" "tailscale0" ];
+      checkReversePath = "loose";
     };
   };
+  systemd.services.NetworkManager-wait-online.enable = false;
 
   # ================================
   # SERVICES
@@ -118,11 +126,11 @@
       };
     };
 
-    tailscale.enable = true;                                 # Tailscale service
+    tailscale.enable = true;
     openssh = {
-      enable = true;                                         # SSH service
+      enable = true;
       settings = {
-        PasswordAuthentication = true;                       # Allow passwords for now
+        PasswordAuthentication = true;
         PermitRootLogin = "no";
       };
     };
@@ -133,6 +141,13 @@
     tumbler.enable = true;
     power-profiles-daemon.enable = true;
     logind.settings.Login.HandlePowerKey = "ignore";
+
+    udev.extraRules = ''
+      SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666", GROUP="dialout"
+      SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", MODE="0666", GROUP="dialout"
+      SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="dialout"
+      SUBSYSTEM=="usb", ATTR{idVendor}=="22b8", MODE="0666", GROUP="dialout"
+    '';
   };
 
   # ================================
@@ -149,8 +164,28 @@
       "storage" 
       "input" 
       "libvirtd" 
-      "docker" 
+      "docker"
+      "video"
+      "dialout"
+      "audio" 
     ];
+  };
+
+  # ================================
+  # ANDROID MIC
+  # ================================
+  systemd.user.services.audiosource = {
+    description = "Android Phone Microphone";
+    wantedBy = [ "default.target" ];
+    environment = {
+      AUDIOSOURCE_NAME = "android-source";
+    };
+    path = with pkgs; [ android-tools pulseaudio python3 bash ];
+    serviceConfig = {
+      ExecStart = "${pkgs.bash}/bin/bash /home/sebastian/audiosource run";
+      Restart = "always";
+      RestartSec = "3s";
+    };
   };
 
   # ================================
@@ -216,20 +251,14 @@
     curl
     wget
     chromium
-    thunderbird
-    wasistlos
     deluge
     remmina
     freerdp
-    payload-dumper-go
-    simg2img
     distrobox
     qemu-utils
     virt-viewer
     usbutils
-    blender
     bottles
-    unityhub
     texliveFull
     woeusb-ng
     ntfs3g
@@ -239,9 +268,21 @@
     mcpelauncher-ui-qt
     nodejs_24
     scrcpy
-    ghidra
     nmap
+    flclash
+    pulseaudio
   ];
+
+  nixpkgs.config.packageOverrides = pkgs: {
+    openldap = pkgs.openldap.overrideAttrs (oldAttrs: {
+      doCheck = false;
+    });
+  };
+
+  environment.sessionVariables = {
+    NIXOS_OZONE_WL = "1";
+    XWAYLAND_NO_GLAMOR = "0"; 
+  };
 
   # ================================
   # SYSTEM CORE

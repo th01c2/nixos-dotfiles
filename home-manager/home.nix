@@ -21,7 +21,7 @@
       waybar.enable = true;
       foot.enable = true;
     };
-    iconTheme = {
+    icons = {
       enable = true;
       package = pkgs.gruvbox-plus-icons;
       dark = "Gruvbox-Plus-Dark";
