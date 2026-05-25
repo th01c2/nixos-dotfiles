@@ -21,20 +21,13 @@
     };
 
     kernelPackages = pkgs.linuxPackages_latest;
-    kernelModules = [ "v4l2loopback" ];
-    extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
+    kernelModules = [ "v4l2loopback" "amneziawg" ];
+    extraModulePackages = [ 
+      config.boot.kernelPackages.v4l2loopback 
+      config.boot.kernelPackages.amneziawg
+    ];
     bootspec.enable = true;
     binfmt.emulatedSystems = [ "aarch64-linux" ];
-    kernelParams = [
-      "quiet"
-      "rd.systemd.show_status=false"
-      "rd.udev.log_level=3"
-      "udev.log_priority=3"
-      "boot.shell_on_fail"
-    ];
-
-    consoleLogLevel = 0; 
-    initrd.verbose = false;
   };
 
   # ================================
@@ -65,6 +58,12 @@
     priority = 10;
   }];
 
+  services.printing = {
+    enable = true;
+    # This makes the ESC/P drivers available to the CUPS service
+    drivers = [ pkgs.epson-escpr pkgs.epson-escpr2 ]; 
+  };
+
   # ================================
   # SYSTEM IDENTITY & LOCALIZATION
   # ================================
@@ -91,15 +90,33 @@
   # ================================
   networking = {
     networkmanager.enable = true;
+
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 57307 8388 ];
-      allowedUDPPorts = [19132 8388 41641 ];
-      trustedInterfaces = [ "tun0" "tailscale0" ];
-      checkReversePath = "loose";
+      allowedTCPPorts = [ 22 80 3000 57307 8388 ];                   
+      allowedUDPPorts = [ 67 68 69 19132 8388 41641 ];                
+      
+      # Removed tailscale0, added wg0
+      trustedInterfaces = [ "tun0" "enp3s0" "wg0" ];                  
+      checkReversePath = "loose";                            
     };
   };
-  systemd.services.NetworkManager-wait-online.enable = false;
+
+  # ================================
+  # SYSTEMD SERVICES (AmneziaWG)
+  # ================================
+  systemd.services.awg-wg0 = {
+    description = "AmneziaWG tunnel wg0";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.amneziawg-tools}/bin/awg-quick up /etc/amnezia/wg0.conf";
+      ExecStop = "${pkgs.amneziawg-tools}/bin/awg-quick down /etc/amnezia/wg0.conf";
+    };
+  };
 
   # ================================
   # SERVICES
@@ -126,7 +143,7 @@
       };
     };
 
-    tailscale.enable = true;
+    # Removed tailscale.enable = true;
     openssh = {
       enable = true;
       settings = {
@@ -141,13 +158,6 @@
     tumbler.enable = true;
     power-profiles-daemon.enable = true;
     logind.settings.Login.HandlePowerKey = "ignore";
-
-    udev.extraRules = ''
-      SUBSYSTEM=="usb", ATTR{idVendor}=="18d1", MODE="0666", GROUP="dialout"
-      SUBSYSTEM=="usb", ATTR{idVendor}=="0e8d", MODE="0666", GROUP="dialout"
-      SUBSYSTEM=="usb", ATTR{idVendor}=="04e8", MODE="0666", GROUP="dialout"
-      SUBSYSTEM=="usb", ATTR{idVendor}=="22b8", MODE="0666", GROUP="dialout"
-    '';
   };
 
   # ================================
@@ -164,28 +174,8 @@
       "storage" 
       "input" 
       "libvirtd" 
-      "docker"
-      "video"
-      "dialout"
-      "audio" 
+      "docker" 
     ];
-  };
-
-  # ================================
-  # ANDROID MIC
-  # ================================
-  systemd.user.services.audiosource = {
-    description = "Android Phone Microphone";
-    wantedBy = [ "default.target" ];
-    environment = {
-      AUDIOSOURCE_NAME = "android-source";
-    };
-    path = with pkgs; [ android-tools pulseaudio python3 bash ];
-    serviceConfig = {
-      ExecStart = "${pkgs.bash}/bin/bash /home/sebastian/audiosource run";
-      Restart = "always";
-      RestartSec = "3s";
-    };
   };
 
   # ================================
@@ -251,38 +241,27 @@
     curl
     wget
     chromium
+    thunderbird
     deluge
     remmina
-    freerdp
     distrobox
     qemu-utils
     virt-viewer
     usbutils
-    bottles
+    unityhub
     texliveFull
     woeusb-ng
     ntfs3g
     mission-center
     vesktop
-    tailscale
+    # Removed tailscale from here
     mcpelauncher-ui-qt
     nodejs_24
     scrcpy
-    nmap
     flclash
-    pulseaudio
+    winboat
+    amneziawg-tools
   ];
-
-  nixpkgs.config.packageOverrides = pkgs: {
-    openldap = pkgs.openldap.overrideAttrs (oldAttrs: {
-      doCheck = false;
-    });
-  };
-
-  environment.sessionVariables = {
-    NIXOS_OZONE_WL = "1";
-    XWAYLAND_NO_GLAMOR = "0"; 
-  };
 
   # ================================
   # SYSTEM CORE
