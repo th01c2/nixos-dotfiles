@@ -91,6 +91,13 @@
   networking = {
     networkmanager.enable = true;
 
+    interfaces.enp3s0 = {
+     ipv4.addresses = [{
+       address = "192.168.1.10"; # Your laptop's fixed identity on the wire
+       prefixLength = 24;
+      }];
+    };
+
     firewall = {
       enable = true;
       allowedTCPPorts = [ 22 80 3000 57307 8388 ];                   
@@ -254,7 +261,6 @@
     ntfs3g
     mission-center
     vesktop
-    # Removed tailscale from here
     mcpelauncher-ui-qt
     nodejs_24
     scrcpy
@@ -262,6 +268,7 @@
     winboat
     amneziawg-tools
     remmina
+    moonlight-qt
   ];
 
   # ================================
