@@ -49,14 +49,19 @@
     enable = true;
     algorithm = "lz4";
     priority = 100;
-    memoryPercent = 50;
+    memoryPercent = 100;
   };
-
+ 
   swapDevices = [{
     device = "/swapfile";
-    size = 16 * 1024;
+    size = 8 * 1024;
     priority = 10;
   }];
+
+  boot.kernel.sysctl = {
+    "vm.swappiness" = 10;
+  };
+
 
   services.printing = {
     enable = true;
@@ -90,24 +95,23 @@
   # ================================
   networking = {
     networkmanager.enable = true;
-
-    interfaces.enp3s0 = {
-     ipv4.addresses = [{
-       address = "192.168.1.10"; # Your laptop's fixed identity on the wire
-       prefixLength = 24;
-      }];
-    };
+#    interfaces.enp3s0.ipv4.addresses = [{
+ #     address = "192.168.1.3";
+  #    prefixLength = 24;
+   # }];
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 80 3000 57307 8388 ];                   
-      allowedUDPPorts = [ 67 68 69 19132 8388 41641 ];                
+      allowedTCPPorts = [ 22 ];                   
+      allowedUDPPorts = [ ];                
       
       # Removed tailscale0, added wg0
-      trustedInterfaces = [ "tun0" "enp3s0" "wg0" ];                  
+      trustedInterfaces = [ "tun0" "wg0" ];                  
       checkReversePath = "loose";                            
     };
   };
+
+   networking.nftables.enable = true;
 
   # ================================
   # SYSTEMD SERVICES (AmneziaWG)
@@ -213,6 +217,8 @@
     fish.enable = true;
   };
 
+  programs.nix-ld.enable = true;
+
   # ================================
   # SYSTEM PACKAGES
   # ================================
@@ -269,6 +275,8 @@
     amneziawg-tools
     remmina
     moonlight-qt
+    jadx
+    jdk25
   ];
 
   # ================================
