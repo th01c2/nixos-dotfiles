@@ -19,14 +19,13 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
     };
-
-    kernelPackages = pkgs.linuxPackages_latest;
+    
+    kernelPackages = pkgs.linuxPackages;
     kernelModules = [ "v4l2loopback" "amneziawg" ];
     extraModulePackages = [ 
       config.boot.kernelPackages.v4l2loopback 
       config.boot.kernelPackages.amneziawg
     ];
-    bootspec.enable = true;
     binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
@@ -210,10 +209,7 @@
   programs = {
     hyprland.enable = true;
     hyprlock.enable = true;
-    thunar = {
-      enable = true;
-      plugins = with pkgs.xfce; [ thunar-archive-plugin thunar-volman ];
-    };
+    thunar.enable = true;
     fish.enable = true;
   };
 
@@ -224,6 +220,8 @@
   # ================================
   environment.systemPackages = with pkgs; [
     inputs.prismlauncher-cracked.packages.${pkgs.system}.prismlauncher
+    thunar-archive-plugin
+    thunar-volman
     librewolf
     file-roller
     file

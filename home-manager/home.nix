@@ -8,6 +8,10 @@
   home.homeDirectory = "/home/sebastian";
   home.stateVersion = "25.05";
 
+  home.pointerCursor = {
+    enable = true;
+  };
+
   home.packages = with pkgs; [
   nerd-fonts.fira-code
   nerd-fonts.jetbrains-mono
