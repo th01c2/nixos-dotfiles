@@ -277,6 +277,7 @@
     moonlight-qt
     jadx
     jdk25
+    antigravity
   ];
 
   # ================================
