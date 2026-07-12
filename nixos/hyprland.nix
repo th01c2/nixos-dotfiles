@@ -29,7 +29,18 @@
     swaynotificationcenter
   ];
 
-  # If using a display manager like greetd or SDDM, configure it here
+xdg.portal = {
+    enable = true;
+    extraPortals = with pkgs; [
+      xdg-desktop-portal-wlr
+      xdg-desktop-portal-gtk  # fallback
+    ];
+    config.hyprland = {
+      default = [ "gtk" ];
+      "org.freedesktop.impl.portal.Screencast" = "wlr";
+      "org.freedesktop.impl.portal.Screenshot" = "wlr";
+    };
+  };  # If using a display manager like greetd or SDDM, configure it here
   # services.greetd.enable = true;
   # services.greetd.settings.default_session.command = "Hyprland";
 

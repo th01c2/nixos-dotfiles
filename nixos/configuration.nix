@@ -264,7 +264,7 @@
     woeusb-ng
     ntfs3g
     mission-center
-    vesktop
+    discord
     mcpelauncher-ui-qt
     nodejs_24
     scrcpy
