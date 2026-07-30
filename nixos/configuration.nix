@@ -34,7 +34,7 @@
   # ================================
   hardware.graphics = {
     enable = true;
-    enable32Bit = false;
+    # disabled for steam - enable32Bit = false;
     extraPackages = with pkgs; [
       libvdpau-va-gl
       libva
@@ -61,12 +61,24 @@
     "vm.swappiness" = 10;
   };
 
+  # Enable the CUPS printing service
+  services.printing.enable = true;
 
-  services.printing = {
-    enable = true;
-    # This makes the ESC/P drivers available to the CUPS service
-    drivers = [ pkgs.epson-escpr pkgs.epson-escpr2 ]; 
-  };
+  # Declaratively add the remote printer
+  hardware.printers.ensurePrinters = [
+    {
+      name = "EPSON_L3230_Series";
+      location = "Network Printer";
+      description = "Epson L3230 Series (WiFi)";
+      # Use IPP protocol for remote CUPS servers
+      deviceUri = "ipp://192.168.1.1:631/printers/EPSON_L3230_Series";
+      # "everywhere" tells CUPS to query the remote server for the driver/PPD
+      model = "everywhere"; 
+    }
+  ];
+
+  # Optional: Set it as your default printer
+  hardware.printers.ensureDefaultPrinter = "EPSON_L3230_Series";
 
   # ================================
   # SYSTEM IDENTITY & LOCALIZATION
@@ -239,8 +251,6 @@
     imv
     mpv
     pavucontrol
-    audacity
-    telegram-desktop
     vscodium
     git
     git-repo
@@ -259,7 +269,6 @@
     qemu-utils
     virt-viewer
     usbutils
-    unityhub
     texliveFull
     woeusb-ng
     ntfs3g
@@ -268,10 +277,8 @@
     mcpelauncher-ui-qt
     nodejs_24
     scrcpy
-    flclash
     winboat
     amneziawg-tools
-    remmina
     moonlight-qt
     jadx
     jdk25
@@ -290,4 +297,8 @@
   };
 
   system.stateVersion = "25.11"; 
+
+ programs.steam = {
+  enable = true;
+};
 }
