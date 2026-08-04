@@ -20,7 +20,8 @@
       efi.canTouchEfiVariables = true;
     };
     
-    kernelPackages = pkgs.linuxPackages;
+    # Use standard latest kernel, optimized via hostPlatform below
+    kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "v4l2loopback" "amneziawg" ];
     extraModulePackages = [ 
       config.boot.kernelPackages.v4l2loopback 
@@ -29,12 +30,21 @@
     binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 
+  nixpkgs.overlays = [
+  (final: prev: {
+    linuxPackages_latest = prev.linuxPackages_latest.extend (lfinal: lprev: {
+      kernel = lprev.kernel.overrideAttrs (old: {
+        NIX_CFLAGS_COMPILE = (old.NIX_CFLAGS_COMPILE or "") + " -march=znver4 -mtune=znver4";
+      });
+    });
+  })
+];
+
   # ================================
   # HARDWARE
   # ================================
   hardware.graphics = {
     enable = true;
-    # disabled for steam - enable32Bit = false;
     extraPackages = with pkgs; [
       libvdpau-va-gl
       libva
@@ -70,14 +80,11 @@
       name = "EPSON_L3230_Series";
       location = "Network Printer";
       description = "Epson L3230 Series (WiFi)";
-      # Use IPP protocol for remote CUPS servers
       deviceUri = "ipp://192.168.1.1:631/printers/EPSON_L3230_Series";
-      # "everywhere" tells CUPS to query the remote server for the driver/PPD
       model = "everywhere"; 
     }
   ];
 
-  # Optional: Set it as your default printer
   hardware.printers.ensureDefaultPrinter = "EPSON_L3230_Series";
 
   # ================================
@@ -106,23 +113,17 @@
   # ================================
   networking = {
     networkmanager.enable = true;
-#    interfaces.enp3s0.ipv4.addresses = [{
- #     address = "192.168.1.3";
-  #    prefixLength = 24;
-   # }];
 
     firewall = {
       enable = true;
-      allowedTCPPorts = [ 22 ];                   
-      allowedUDPPorts = [ ];                
-      
-      # Removed tailscale0, added wg0
-      trustedInterfaces = [ "tun0" "wg0" ];                  
-      checkReversePath = "loose";                            
+      allowedTCPPorts = [ 22 ];                 
+      allowedUDPPorts = [ ];              
+      trustedInterfaces = [ "tun0" "wg0" ];                 
+      checkReversePath = "loose";                         
     };
   };
 
-   networking.nftables.enable = true;
+  networking.nftables.enable = true;
 
   # ================================
   # SYSTEMD SERVICES (AmneziaWG)
@@ -165,7 +166,6 @@
       };
     };
 
-    # Removed tailscale.enable = true;
     openssh = {
       enable = true;
       settings = {
@@ -223,9 +223,9 @@
     hyprlock.enable = true;
     thunar.enable = true;
     fish.enable = true;
+    nix-ld.enable = true;
+    steam.enable = true;
   };
-
-  programs.nix-ld.enable = true;
 
   # ================================
   # SYSTEM PACKAGES
@@ -269,7 +269,6 @@
     qemu-utils
     virt-viewer
     usbutils
-    texliveFull
     woeusb-ng
     ntfs3g
     mission-center
@@ -283,6 +282,7 @@
     jadx
     jdk25
     antigravity
+    wireshark
   ];
 
   # ================================
@@ -291,14 +291,14 @@
   security.rtkit.enable = true;
   security.pam.services.hyprlock = {};
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  
   nixpkgs.config = {
-    allowUnfree = true;
-    android_sdk.accept_license = true;
-  };
+  allowUnfree = true;
+  android_sdk.accept_license = true;
+  permittedInsecurePackages = [
+    "electron-40.10.5"
+  ];
+};
 
   system.stateVersion = "25.11"; 
-
- programs.steam = {
-  enable = true;
-};
 }
