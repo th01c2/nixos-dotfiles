@@ -9,7 +9,6 @@
     ./bash_configuration.nix
     ./hyprland.nix
     ../config/themes/stylix.nix
-    ./gpu-compute-additions.nix
   ];
 
   # ================================
