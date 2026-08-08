@@ -9,6 +9,7 @@
     ./bash_configuration.nix
     ./hyprland.nix
     ../config/themes/stylix.nix
+    ./gpu-compute-additions.nix
   ];
 
   # ================================
@@ -84,6 +85,11 @@
       model = "everywhere"; 
     }
   ];
+
+  systemd.services.ensure-printers = {
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+  };
 
   hardware.printers.ensureDefaultPrinter = "EPSON_L3230_Series";
 
