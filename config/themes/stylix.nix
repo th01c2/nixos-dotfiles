@@ -35,7 +35,7 @@
       size = 24;
     };
     # image = ../wallpapers/warm/railtrack.jpg;
-    image = ../../wallpapers/minimal_c.png;
+    image = ../../wallpapers/aesthetic.png;
     fonts = {
       serif = {
         package = pkgs.noto-fonts;

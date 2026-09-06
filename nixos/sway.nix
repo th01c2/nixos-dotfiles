@@ -2,7 +2,7 @@
 
 {
   # Enable the Hyprland window manager
-  programs.hyprland.enable = true;
+  programs.sway.enable = true;
 
   environment.systemPackages = with pkgs; [
     waybar           # Status bar
@@ -15,18 +15,14 @@
     qt5.qtwayland    # Qt Wayland support
     qt6.qtwayland    # Qr Wayland 6 support
     foot	     # Foot terminal
-    hyprsunset	     # Night Light Mode
-    hyprpaper	     # Wallpaper Utility
-    hypridle	     # Add Inactivity Timer for Hyprlock
     brightnessctl    # Change Brightness
     blueman	     # Bluetooth Daemon
     networkmanagerapplet #Network Button (Neede for Waybar)
     nwg-look	     # Change theme
-    hyprcursor       # Cursor themes
     nwg-bar          # Poweroff/Reboot/Suspend button menu
     fuzzel	     # ROFI/WOFI Alternative
-    hyprpicker
-    swaynotificationcenter
+    swaynotificationcenter # The name tells everything already
+    autotiling
   ];
 
 xdg.portal = {
@@ -35,7 +31,7 @@ xdg.portal = {
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk  # fallback
     ];
-    config.hyprland = {
+    config.sway = {
       default = [ "gtk" ];
       "org.freedesktop.impl.portal.Screencast" = "wlr";
       "org.freedesktop.impl.portal.Screenshot" = "wlr";
