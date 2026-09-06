@@ -2,12 +2,18 @@
 
 {
   # Enable the Hyprland window manager
-  programs.sway.enable = true;
+  programs.hyprland.enable = true;
 
   environment.systemPackages = with pkgs; [
     waybar           # Status bar
     wlsunset	     # Blue Light Filter
     hyprshot
+    hyprsunset
+    hyprpaper
+    hypridle
+    hyprcursor
+    hyprlock
+    hyprpicker
     grimblast
     slurp            # Select region for screenshots
     wl-screenrec     # Screen Recorder Utility
@@ -21,8 +27,6 @@
     nwg-look	     # Change theme
     nwg-bar          # Poweroff/Reboot/Suspend button menu
     fuzzel	     # ROFI/WOFI Alternative
-    swaynotificationcenter # The name tells everything already
-    autotiling
   ];
 
 xdg.portal = {
@@ -31,7 +35,7 @@ xdg.portal = {
       xdg-desktop-portal-wlr
       xdg-desktop-portal-gtk  # fallback
     ];
-    config.sway = {
+    config.hyprland = {
       default = [ "gtk" ];
       "org.freedesktop.impl.portal.Screencast" = "wlr";
       "org.freedesktop.impl.portal.Screenshot" = "wlr";

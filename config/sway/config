@@ -48,7 +48,7 @@ bindsym $mod+m exit
 bindsym $mod+e exec $fileManager
 bindsym $mod+v floating toggle
 bindsym $mod+d exec $menu
-bindsym $mod+z exec librewolf
+bindsym $mod+z exec firefox
 bindsym $mod+l exec swaylock
 
 # Move focus
@@ -96,7 +96,6 @@ bindsym --locked XF86MonBrightnessUp exec brightnessctl -e4 -n2 set 5%+
 bindsym --locked XF86MonBrightnessDown exec brightnessctl -e4 -n2 set 5%-
 
 # Task Manager & Screenshots
-bindsym Control+Shift+Escape exec missioncenter
 bindsym $mod+Shift+p exec grimblast --freeze save area "$HOME/Pictures/Screenshots/screenshot_$(date +%Y%m%d_%H%M%S).png"
 bindsym $mod+Shift+r exec wl-screenrec -f ~/Videos/region_$(date +%Y%m%d_%H%M%S).mp4 -g "$(slurp)" --low-power=off
 

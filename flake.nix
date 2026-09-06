@@ -17,7 +17,7 @@
     };
 
     # PrismLauncher Cracked input
-    prismlauncher-cracked.url = "github:Diegiwg/PrismLauncher-Cracked"; # Added this line
+    prismlauncher-cracked.url = "github:Diegiwg/PrismLauncher-Cracked";
 
     cachix.url = "github:cachix/cachix";
   };

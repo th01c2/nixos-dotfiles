@@ -6,8 +6,9 @@
   imports = [
     ./hardware-configuration.nix
     ./bash_configuration.nix
-    ./sway.nix
+    ./hyprland.nix
     ../config/themes/stylix.nix
+    ./zen3.nix
   ];
 
   # ================================
@@ -19,7 +20,6 @@
       efi.canTouchEfiVariables = true;
     };
 
-    # Use standard latest kernel, optimized via hostPlatform below
     kernelPackages = pkgs.linuxPackages_latest;
     kernelModules = [ "v4l2loopback" "amneziawg" ];
     extraModulePackages = [ 
@@ -60,25 +60,6 @@
     priority = 10;
   }];
 
-  # Enable the CUPS printing service
-  # services.printing.enable = true;
-
-  # Declaratively add the remote printer
-  # hardware.printers.ensurePrinters = [
-  #  {
-  #    name = "EPSON_L3230_Series";
-  #    location = "Network Printer";
-  #    description = "Epson L3230 Series (WiFi)";
-  #    deviceUri = "ipp://192.168.1.1:631/printers/EPSON_L3230_Series";
-  #    model = "everywhere";
-  #  }
-  #];
-  
-  #systemd.services.ensure-printers = {
-  #  after = [ "network-online.target" ];
-  #  wants = [ "network-online.target" ];
-  #};
-  
   hardware.printers.ensureDefaultPrinter = "EPSON_L3230_Series";
 
   # ================================
@@ -108,7 +89,10 @@
   networking = {
     networkmanager = {
       enable = true;
-      wifi.powersave = true; # Saves battery when WiFi is idle
+      wifi.powersave = true;
+      # Force 1.1.1.1 / 1.0.0.1 ahead of any DHCP-provided DNS,
+      # per-connection, for every NetworkManager profile.
+      insertNameservers = [ "1.1.1.1" "1.0.0.1" ];
     };
 
     firewall = {
@@ -122,33 +106,16 @@
   };
 
   # ================================
-  # SYSTEMD SERVICES (AmneziaWG)
-  # ================================
-  #systemd.services.awg-wg0 = {
-  #  description = "AmneziaWG tunnel wg0";
-  #  after = [ "network-online.target" ];
-  #  wants = [ "network-online.target" ];
-  #  wantedBy = [ "multi-user.target" ];
-  #  serviceConfig = {
-  #    Type = "oneshot";
-  #    RemainAfterExit = true;
-  #    ExecStart = "${pkgs.amneziawg-tools}/bin/awg-quick up /etc/amnezia/wg0.conf";
-  #    ExecStop = "${pkgs.amneziawg-tools}/bin/awg-quick down /etc/amnezia/wg0.conf";
-  #  };
-  #};
-
-  # ================================
   # POWER MANAGEMENT & LAPTOP
   # ================================
   powerManagement.enable = true;
 
-  # Auto-cpufreq handles frequency scaling
   services.auto-cpufreq = {
     enable = true;
     settings = {
       battery = {
-        governor = "schedutil"; # Balanced performance on battery
-        turbo = "auto";         # Allow turbo boosting for snappy response
+        governor = "schedutil";
+        turbo = "auto";
       };
       charger = {
         governor = "performance";
@@ -157,10 +124,9 @@
     };
   };
 
-  # Essential laptop services
-  services.thermald.enable = true; # Prevents overheating throttling
-  services.upower.enable = true;   # Required for Waybar battery module
-  services.fstrim.enable = true;   # SSD longevity and performance
+  services.thermald.enable = true;
+  services.upower.enable = true;
+  services.fstrim.enable = true;
 
   # ================================
   # SERVICES
@@ -199,15 +165,13 @@
     flatpak.enable = true;
     gvfs.enable = true;
     tumbler.enable = true;
-    
-    # Must be disabled to prevent conflicts with auto-cpufreq
     power-profiles-daemon.enable = false;
 
     logind = {
       settings = {
         Login = {
           HandlePowerKey = "ignore";
-          HandleLidSwitch = "ignore"; # Do nothing when laptop lid is closed
+          HandleLidSwitch = "ignore";
         };
       };
     };
@@ -232,21 +196,6 @@
   };
 
   # ================================
-  # VIRTUALIZATION
-  # ================================
-  # virtualisation = {
-  #   docker.enable = true;
-  #   libvirtd = {
-  #     enable = true;
-  #     qemu = {
-  #       package = pkgs.qemu_kvm;
-  #       runAsRoot = true;
-  #       swtpm.enable = true;
-  #     };
-  #   };
-  # };
-
-  # ================================
   # PROGRAMS
   # ================================
   programs = {
@@ -261,7 +210,7 @@
     inputs.prismlauncher-cracked.packages.${pkgs.system}.prismlauncher
     thunar-archive-plugin
     thunar-volman
-    librewolf
+    firefox
     file-roller
     file
     p7zip
@@ -273,9 +222,7 @@
     fastfetch
     tuigreet
     libnotify
-    ffmpeg
     imv
-    mpv
     pavucontrol
     vscodium
     git
