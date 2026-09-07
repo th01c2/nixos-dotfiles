@@ -60,7 +60,25 @@
     priority = 10;
   }];
 
-  hardware.printers.ensureDefaultPrinter = "EPSON_L3230_Series";
+  # Enable the CUPS printing service
+  # services.printing.enable = true;
+
+  # Declaratively add the remote printer
+  # hardware.printers.ensurePrinters = [
+  #  {
+  #    name = "EPSON_L3230_Series";
+  #    location = "Network Printer";
+  #    description = "Epson L3230 Series (WiFi)";
+  #    deviceUri = "ipp://192.168.1.1:631/printers/EPSON_L3230_Series";
+  #    model = "everywhere";
+  #  }
+  #];
+  
+  #systemd.services.ensure-printers = {
+  #  after = [ "network-online.target" ];
+  #  wants = [ "network-online.target" ];
+  #};
+
 
   # ================================
   # SYSTEM IDENTITY & LOCALIZATION
@@ -90,8 +108,6 @@
     networkmanager = {
       enable = true;
       wifi.powersave = true;
-      # Force 1.1.1.1 / 1.0.0.1 ahead of any DHCP-provided DNS,
-      # per-connection, for every NetworkManager profile.
       insertNameservers = [ "1.1.1.1" "1.0.0.1" ];
     };
 
@@ -103,6 +119,22 @@
       checkReversePath = "loose";                         
     };
     nftables.enable = true;
+  };
+
+   # ================================
+  # SYSTEMD SERVICES (AmneziaWG)
+  # ================================
+  systemd.services.awg-wg0 = {
+    description = "AmneziaWG tunnel wg0";
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+    wantedBy = [ "multi-user.target" ];
+    serviceConfig = {
+      Type = "oneshot";
+      RemainAfterExit = true;
+      ExecStart = "${pkgs.amneziawg-tools}/bin/awg-quick up /etc/amnezia/wg0.conf";
+      ExecStop = "${pkgs.amneziawg-tools}/bin/awg-quick down /etc/amnezia/wg0.conf";
+    };
   };
 
   # ================================
@@ -148,7 +180,7 @@
     greetd = {
       enable = true;
       settings.default_session = {
-        command = "tuigreet --time --remember --cmd sway";
+        command = "tuigreet --time --remember --cmd start-hyprland";
         user = "sebastian";
       };
     };
@@ -194,6 +226,21 @@
       "docker"
     ];
   };
+
+  # ================================
+  # VIRTUALIZATION
+  # ================================
+  # virtualisation = {
+  #   docker.enable = true;
+  #   libvirtd = {
+  #     enable = true;
+  #     qemu = {
+  #       package = pkgs.qemu_kvm;
+  #       runAsRoot = true;
+  #       swtpm.enable = true;
+  #     };
+  #   };
+  # };
 
   # ================================
   # PROGRAMS
@@ -250,8 +297,8 @@
     jdk25
     wireshark
     telegram-desktop
-    swaybg
     codex
+    stremio-linux-shell
   ];
 
   # ================================
@@ -265,7 +312,6 @@
     allowUnfree = true;
     android_sdk.accept_license = true;
     permittedInsecurePackages = [
-      # Add package here
     ];
   };
 
