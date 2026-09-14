@@ -227,20 +227,20 @@
     ];
   };
 
-  # ================================
-  # VIRTUALIZATION
-  # ================================
-  # virtualisation = {
-  #   docker.enable = true;
-  #   libvirtd = {
-  #     enable = true;
-  #     qemu = {
-  #       package = pkgs.qemu_kvm;
-  #       runAsRoot = true;
-  #       swtpm.enable = true;
-  #     };
-  #   };
-  # };
+   # ================================
+   # VIRTUALIZATION
+   # ================================
+   virtualisation = {
+     docker.enable = true;
+     libvirtd = {
+       enable = true;
+       qemu = {
+         package = pkgs.qemu_kvm;
+         runAsRoot = true;
+         swtpm.enable = true;
+       };
+     };
+   };
 
   # ================================
   # PROGRAMS
@@ -248,6 +248,8 @@
   programs = {
     thunar.enable = true;
     nix-ld.enable = true;
+    virt-manager.enable = true;
+    dconf.enable = true;
   };
 
   # ================================
