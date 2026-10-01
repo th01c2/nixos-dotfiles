@@ -33,8 +33,8 @@
 };
   # Hyprland configuration symlink
   home.file = {
-    # Hyprland Config 
-    ".config/hypr/hyprland.conf".source = ../config/hypr/hyprland.conf;
+    # Hyprland Config
+    ".config/hypr/hyprland.lua".source = ../config/hypr/hyprland.lua;
 
     # Hyprlock Config
     ".config/hypr/hyprlock.conf".source = ../config/hypr/hyprlock.conf;
@@ -66,6 +66,9 @@
 
     # MPV Config
     ".config/mpv/mpv.conf".source = ../config/mpv/mpv.conf;
+
+    # NeoVim config
+    ".config/nvim/init.lua".source = ../config/nvim/init.lua;
   };
   
   # ============================

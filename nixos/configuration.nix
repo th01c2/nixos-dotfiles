@@ -44,6 +44,7 @@
       libva-vdpau-driver
     ];
   };
+
   
   hardware.bluetooth.enable = true;
   
@@ -61,23 +62,23 @@
   }];
 
   # Enable the CUPS printing service
-  # services.printing.enable = true;
+   services.printing.enable = true;
 
   # Declaratively add the remote printer
-  # hardware.printers.ensurePrinters = [
-  #  {
-  #    name = "EPSON_L3230_Series";
-  #    location = "Network Printer";
-  #    description = "Epson L3230 Series (WiFi)";
-  #    deviceUri = "ipp://192.168.1.1:631/printers/EPSON_L3230_Series";
-  #    model = "everywhere";
-  #  }
-  #];
+   hardware.printers.ensurePrinters = [
+    {
+      name = "EPSON_L3230_Series";
+      location = "Network Printer";
+      description = "Epson L3230 Series (WiFi)";
+      deviceUri = "ipp://192.168.1.1:631/printers/EPSON_L3230_Series";
+      model = "everywhere";
+    }
+  ];
   
-  #systemd.services.ensure-printers = {
-  #  after = [ "network-online.target" ];
-  #  wants = [ "network-online.target" ];
-  #};
+  systemd.services.ensure-printers = {
+    after = [ "network-online.target" ];
+    wants = [ "network-online.target" ];
+  };
 
 
   # ================================
@@ -259,6 +260,9 @@
     inputs.prismlauncher-cracked.packages.${pkgs.system}.prismlauncher
     thunar-archive-plugin
     thunar-volman
+    tree-sitter
+    gcc
+    clang-tools
     firefox
     file-roller
     file
@@ -266,7 +270,7 @@
     unrar
     unzip
     zip
-    vim
+    neovim
     foot
     fastfetch
     tuigreet
@@ -301,6 +305,9 @@
     telegram-desktop
     codex
     stremio-linux-shell
+    yt-dlp
+    remmina
+    cifs-utils
   ];
 
   # ================================
