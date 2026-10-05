@@ -16,10 +16,14 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # PrismLauncher Cracked input
     prismlauncher-cracked.url = "github:Diegiwg/PrismLauncher-Cracked";
 
     cachix.url = "github:cachix/cachix";
+
+    pillbar = {
+      url = "github:th01c2/pillbar";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, stylix, prismlauncher-cracked, ... }@inputs: {
@@ -39,7 +43,7 @@
         }
       ];
       
-      specialArgs = { inherit inputs; }; # Passes inputs to configuration.nix
+      specialArgs = { inherit inputs; }; # Passes inputs to configuration.nix (i need to remember this)
     };
 
     homeConfigurations.sebastian = home-manager.lib.homeManagerConfiguration {

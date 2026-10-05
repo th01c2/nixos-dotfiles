@@ -260,7 +260,7 @@
   # SYSTEM PACKAGES
   # ================================
   environment.systemPackages = with pkgs; [
-    inputs.prismlauncher-cracked.packages.${pkgs.system}.prismlauncher
+    inputs.prismlauncher-cracked.packages.${pkgs.stdenv.hostPlatform.system}.prismlauncher
     thunar-archive-plugin
     thunar-volman
     tree-sitter

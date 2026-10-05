@@ -510,6 +510,26 @@
         "type": "github"
       }
     },
+    "pillbar": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1791208074,
+        "narHash": "sha256-Cxgz6FiblOLpDoBB2gb0D+ieFBGG67zRt8bICK2u2ss=",
+        "owner": "th01c2",
+        "repo": "pillbar",
+        "rev": "6b8256af305a53653baa8fcbfe292e17fb85469c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "th01c2",
+        "repo": "pillbar",
+        "type": "github"
+      }
+    },
     "prismlauncher-cracked": {
       "inputs": {
         "libnbtplusplus": "libnbtplusplus",
@@ -534,6 +554,7 @@
         "cachix": "cachix",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_2",
+        "pillbar": "pillbar",
         "prismlauncher-cracked": "prismlauncher-cracked",
         "stylix": "stylix"
       }

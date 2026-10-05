@@ -56,6 +56,7 @@ hl.on("hyprland.start", function()
     hl.exec_cmd("hypridle")
     hl.exec_cmd("systemctl --user start hyprpolkitagent")
     hl.exec_cmd("swaync") -- was "xexec-once" (typo) in hyprland.conf
+    hl.exec_cmd("pillbar") -- pillbar startup
 end)
 
 -------------------------------

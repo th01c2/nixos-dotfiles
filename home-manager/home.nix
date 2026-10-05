@@ -17,6 +17,7 @@
   nerd-fonts.jetbrains-mono
   nerd-fonts.hack
   font-awesome
+  inputs.pillbar.packages.${pkgs.stdenv.hostPlatform.system}.default
 ];
 
   stylix = {
