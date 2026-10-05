@@ -29,7 +29,9 @@
     binfmt.emulatedSystems = [ "aarch64-linux" ];
     
     kernel.sysctl = {
-      "vm.swappiness" = 10;
+      "vm.swappiness" = 150;          # zram is RAM-speed, so swap eagerly
+      "vm.page-cluster" = 0;          # no swap read-ahead, good for zram
+      "vm.watermark_boost_factor" = 0;
     };
   };
 
@@ -50,14 +52,14 @@
   
   zramSwap = {
     enable = true;
-    algorithm = "lz4";
+    algorithm = "zstd";
     priority = 100;
     memoryPercent = 100;
   };
   
   swapDevices = [{
     device = "/swapfile";
-    size = 8 * 1024;
+    size = 4 * 1024;
     priority = 10;
   }];
 
@@ -233,6 +235,7 @@
    # ================================
    virtualisation = {
      docker.enable = true;
+     docker.enableOnBoot = false;
      libvirtd = {
        enable = true;
        qemu = {
